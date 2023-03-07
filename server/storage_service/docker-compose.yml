@@ -1,0 +1,73 @@
+version: '3.4'
+
+services:
+  storage_service:
+    image: trackx/storage_service:v1
+    restart: always
+    depends_on:
+      - minio
+    ports:
+      - 8060:8060
+    environment:
+      MODE: release
+      PORT: 8060
+      PUBLIC_URL: http://localhost:9000
+      OBJECT_STORE_TYPE: minio
+      OBJECT_STORE_URL: http://minio:9000
+      ACCESS_KEY: arkam
+      SECRET_KEY: Arkam2004
+      USE_SSL: false
+      BUCKET_NAMES: profiles,issue-fixes-attachments,issue-atachments,project-atachments
+      AWS_REGION: "no-region"
+      OBJECT_LOCKING: true
+      PRESIGNED_PUT_URL_EXPIRY: 300s
+      PRESIGNED_GET_URL_EXPIRY: 600s
+      CHECK_BUCKET_CHANGES_TIMER: 10s
+    
+  minio:
+    image: minio/minio
+    restart: always
+    volumes:
+      - minio_data:/data
+    ports:
+      - 9000:9000
+      - 9001:9001
+    environment:
+      MINIO_ROOT_USER: arkam
+      MINIO_ROOT_PASSWORD: Arkam2004
+    command: server --console-address ":9001" /data
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    volumes:
+    - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgrespassword
+  hasura:
+    image: hasura/graphql-engine:latest
+    ports:
+    - "8080:8080"
+    depends_on:
+    - "postgres"
+    restart: always
+    environment:
+      HASURA_GRAPHQL_ENABLE_REMOTE_SCHEMA_PERMISSIONS: "true"
+      ## postgres database to store Hasura metadata
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
+      ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
+      PG_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
+      ## enable the console served by server
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      ## enable debugging mode. It is recommended to disable this in production
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      ## uncomment next line to run console offline (i.e load console assets from server instead of CDN)
+      HASURA_GRAPHQL_CONSOLE_ASSETS_DIR: /srv/console-assets
+      ## uncomment next line to set an admin secret
+      HASURA_GRAPHQL_ADMIN_SECRET: Arkam2004
+      OBJECT_STORE_API: http://storage_service:8060/graphql
+
+volumes:
+  minio_data:
+  db_data:

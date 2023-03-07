@@ -1,0 +1,83 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+scalar Upload
+scalar Int64
+
+type Error {
+  message: String!
+  reason: String!
+}
+
+type Response {
+  message: String!
+}
+
+type MetaData {
+  AVAILABLE_BUCKETS: [String!]!
+}
+
+type Bucket {
+  name: String!
+  created_at: Int64!
+}
+
+type PresignedUrl {
+  object_name: ID!
+  url: String!
+  url_operation: String!
+  host: String!
+  bucket: String!
+  path: String!
+  expiry: String!
+}
+
+type Object {
+  name: ID!
+  path: String!
+  bucket: String!
+}
+
+input CreateBucketInput {
+  name: ID!
+  object_locking: Boolean!
+}
+
+input DeleteBucketInput {
+  name: ID!
+}
+
+input PresignedPutUrlInput {
+  object_name: ID!
+  bucket_name: String!
+}
+
+input PresignedGetUrlInput {
+  object_name: ID!
+  bucket_name: String!
+}
+
+input UploadObjectInput {
+  name: ID!
+  bucket_name: String!
+  object: Upload!
+}
+
+input RemoveObjectInput {
+  name: ID!
+  bucket_name: String!
+}
+
+type Query {
+  presigned_put_url(params: PresignedPutUrlInput!): PresignedUrl!
+  presigned_get_url(params: PresignedGetUrlInput!): PresignedUrl!
+  _meta_data: MetaData!
+  _available_buckets: [Bucket!]!
+}
+
+type Mutation {
+  upload_object(params: UploadObjectInput!): Object!
+  remove_object(params: RemoveObjectInput!): Response!
+  _create_bucket(params: CreateBucketInput!): Bucket!
+  _delete_bucket(params: DeleteBucketInput!): Response!
+}
