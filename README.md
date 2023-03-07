@@ -1,6 +1,6 @@
-# This is a project i am doing for university
+# This is a project i am doing to build a client server based application
 
-- ## This is a project done as th GAD (Gui Application Development) university project to fullfil the practical examination for the subject
+- ## This is a project done as the GAD (Gui Application Development) university project to fullfil the practical examination for the subject
 
 - ### Primary technologies used in the application
   
