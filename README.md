@@ -18,14 +18,7 @@
 
       - Minio (or any s3 compatible object store)
 
-    - Search Engine
-
-      - MeiliSearch
-
     - Services
 
       - Storage Service (written in golang)
-      - User Service (written in golang)
-      - Mail Service (written in asp.net)
-      - Search Service (written in rust)
       - Crud Service (powered by hasura)
