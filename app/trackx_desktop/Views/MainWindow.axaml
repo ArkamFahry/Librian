@@ -4,16 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Width="800"
+        Height="450"
         x:Class="trackx_desktop.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="trackx_desktop">
+        Title="TrackX">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    <Grid ShowGridLines="True" ColumnDefinitions="2*,*">
+        <Grid Grid.Column="0" Background="#55F2FF">
+			<Label Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="45" FontWeight="Bold" FontFamily="JetBrainsMono NF">TrackX</Label>
+            <Label Grid.Column="0" Margin="200, 60, 50, 10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Regular" FontFamily="JetBrainsMono NF">By Devx</Label>
+        </Grid>
+    </Grid>
 </Window>
