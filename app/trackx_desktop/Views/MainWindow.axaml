@@ -3,6 +3,7 @@
         xmlns:vm="using:trackx_desktop.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:components="clr-namespace:trackx_desktop.Views.Components"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         Width="800"
         Height="450"
@@ -15,10 +16,24 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-    <Grid ShowGridLines="True" ColumnDefinitions="2*,*">
-        <Grid Grid.Column="0" Background="#55F2FF">
-			<Label Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="45" FontWeight="Bold" FontFamily="JetBrainsMono NF">TrackX</Label>
-            <Label Grid.Column="0" Margin="200, 60, 50, 10" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Regular" FontFamily="JetBrainsMono NF">By Devx</Label>
+	<Panel>
+		<Grid ColumnDefinitions="2*,*">
+            <Grid Grid.Column="0" Background="#55F2FF">
+				<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0">
+					<Label FontSize="45" FontWeight="Bold" FontFamily="JetBrainsMono NF" Content="TrackX"/>
+                    <Label FontSize="15" Margin="130, -15, 0, 10" FontWeight="Regular" FontFamily="JetBrainsMono NF" Content="By DevX"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1" Background="#082427">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                    <Label Content="{Binding FormHeadingContent}" HorizontalAlignment="Center" FontSize="36" FontWeight="ExtraBold" FontFamily="JetBrainsMono NF"/>
+                    <components:LoginControl DataContext="{Binding}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsVisible="{Binding IsLoginPage}"/>
+                    <components:SignUpControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsVisible="{Binding IsSignUpPage}" />
+                    <Label Content="{Binding SwitchHintContent}" HorizontalAlignment="Center" FontSize="11" FontWeight="Regular" Margin="0, 20,0 ,0"/>
+                    <Button Content="{Binding SwitchButtonContent}" FontSize="11" Margin="0, 10,0 ,0" HorizontalAlignment="Center" FontWeight="Bold" Background="#022A30" Command="{Binding LoginOrSignUpPageSwitch}"/>
+                </StackPanel>
+            </Grid>
         </Grid>
-    </Grid>
+
+	</Panel>
 </Window>

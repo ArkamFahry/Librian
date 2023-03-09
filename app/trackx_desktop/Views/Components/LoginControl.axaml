@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:components="clr-namespace:trackx_desktop.ViewModels.Components"
+             mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="200"
+             VerticalAlignment="Stretch"
+             HorizontalAlignment="Stretch"
+             x:Class="trackx_desktop.Views.Components.LoginControl">
+
+    <Design.DataContext>
+		<components:LoginViewModel/>
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto, Auto, Auto" Background="#082427" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <StackPanel Grid.Row="0" Margin="15, 15">
+			<Label HorizontalAlignment="Left" Content="Email"/>
+            <TextBox Text="" Background="#022A30" />
+		</StackPanel>
+        <StackPanel Grid.Row="1"  Margin="15, 15">
+            <Label HorizontalAlignment="Left" Content="Password"/>
+            <TextBox Text="" Background="#022A30"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Button Content="Login" Padding="10" HorizontalAlignment="Center" Background="#022A30" Margin="0, 5, 0, 0" FontWeight="ExtraBold"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
+
