@@ -12,11 +12,9 @@ namespace trackx_desktop.ViewModels.Components
     public partial class LoginViewModel : ViewModelBase
     {
         [ObservableProperty] private string _loginEmail;
-
         [ObservableProperty] private string _loginPassword;
 
         [ObservableProperty] private string _loginEmailError;
-
         [ObservableProperty] private string _loginPasswordError;
 
         [RelayCommand]

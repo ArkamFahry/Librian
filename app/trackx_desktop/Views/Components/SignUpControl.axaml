@@ -15,14 +15,17 @@
         <StackPanel Grid.Row="0" Margin="15, 15">
             <Label HorizontalAlignment="Left" Content="User Name"/>
             <TextBox Text="{Binding SignUpUserName}" Background="#022A30" />
+            <Label Foreground="Red" Content="{Binding SignUpUserNameError}"/>
         </StackPanel>
         <StackPanel Grid.Row="1"  Margin="15, 15">
             <Label HorizontalAlignment="Left" Content="Email"/>
             <TextBox Text="{Binding SignUpEmail}" Background="#022A30"/>
+            <Label Foreground="Red" Content="{Binding SignUpEmailError}"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Margin="15, 15">
             <Label HorizontalAlignment="Left" Content="Password"/>
-            <TextBox Text="{Binding SignUpPassword}" Background="#022A30" PasswordChar="*"/>
+            <TextBox Text="{Binding SignUpPassword}" Background="#022A30" PasswordChar=""/>
+            <Label Foreground="Red" Content="{Binding SignUpPasswordError}"/>
         </StackPanel>
         <StackPanel Grid.Row="3">
             <Button Content="Sign Up" Padding="10" HorizontalAlignment="Center" Background="#022A30" Margin="0, 5, 0, 0" FontWeight="ExtraBold" Command="{Binding SignUp}"/>
