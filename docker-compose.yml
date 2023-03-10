@@ -45,32 +45,6 @@ services:
       PRESIGNED_GET_URL_EXPIRY: 600s
       CHECK_BUCKET_CHANGES_TIMER: 10s
 
-  dragonfly:
-    image: docker.dragonflydb.io/dragonflydb/dragonfly
-    restart: always
-    ulimits:
-      memlock: -1
-    command:
-      - --requirepass=Arkam2004
-    ports:
-      - "6379:6379"
-    volumes:
-      - dragonfly_data:/data 
-
-  authorizer:
-    image: lakhansamani/authorizer
-    restart: always
-    ports:
-      - "8070:8070"
-    depends_on:
-      - dragonfly
-      - sql_server
-    environment:
-      PORT: 8070
-      DATABASE_TYPE: sqlserver
-      DATABASE_URL: sqlserver://SA:Arkam2004@sql_server:1433?database=trackx
-      REDIS_URL: redis://:Arkam2004@dragonfly:6379
-
   postgres:
     image: postgres:latest
     restart: always
@@ -89,15 +63,14 @@ services:
     environment:
       HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:Arkam2004@postgres:5432/postgres
       PG_DATABASE_URL: postgres://postgres:Arkam2004@postgres:5432/postgres
-      NSSQL_DATABASE_URL: Driver={ODBC Driver 18 for SQL Server};Server=tcp:sql_server,1433;Database=trackx;Uid=SA;Pwd=Arkam2004;Encrypt=optional
+      MSSQL_DATABASE_URL: Driver={ODBC Driver 18 for SQL Server};Server=tcp:sql_server,1433;Database=model;Uid=SA;Pwd=Arkam2004;Encrypt=optional
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true" 
       HASURA_GRAPHQL_DEV_MODE: "true"
       HASURA_GRAPHQL_ENABLE_REMOTE_SCHEMA_PERMISSIONS: "true"
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       HASURA_GRAPHQL_CONSOLE_ASSETS_DIR: /srv/console-assets
-      HASURA_GRAPHQL_ADMIN_SECRET: Arkam2004
+      # HASURA_GRAPHQL_ADMIN_SECRET: Arkam2004
       OBJECT_STORE_API: http://storage_service:8060/graphql
-      AUTHORIZER_API : http://authorizer:8070/graphql
 
 volumes:
   minio_data:

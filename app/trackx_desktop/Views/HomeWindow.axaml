@@ -7,6 +7,7 @@
         Width="800"
         Height="500"
         x:Class="trackx_desktop.Views.HomeWindow"
+        Icon="/Assets/librian-logo.ico"
         Title="TrackX Home"
         TransparencyLevelHint="AcrylicBlur"
         Background="Transparent"
@@ -34,9 +35,9 @@
                 <StackPanel>
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Grid ColumnDefinitions="*, 2*">
-							<Image Grid.Column="0" Source="/Assets/trackx-logo.ico" Width="40" Height="40" VerticalAlignment="Top" />
+							<Image Grid.Column="0" Source="/Assets/librian-logo.png" Width="40" Height="40" VerticalAlignment="Top" />
                             <StackPanel Grid.Column="1">
-								<Label  Content="TrackX" FontSize="18"/>
+								<Label  Content="Librian" FontSize="18"/>
                                 <Label  Content="By DeveX" FontSize="9" Margin="30, -5, 0, 10"></Label>
                             </StackPanel>
                         </Grid>
@@ -44,7 +45,7 @@
 					</StackPanel>
                     <StackPanel>
 						<Button Background="#022A30" Content="Home" CornerRadius="10" Margin="1, 2" Padding="10, 10" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
-                        <Button Background="#022A30" Content="Projects" CornerRadius="10" Margin="1, 2" Padding="10, 10" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+                        <Button Background="#022A30" Content="Books" CornerRadius="10" Margin="1, 2" Padding="10, 10" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
                         <Button Background="#022A30" Content="Profile" CornerRadius="10" Margin="1, 2" Padding="10, 10" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
                     </StackPanel>
                 </StackPanel>

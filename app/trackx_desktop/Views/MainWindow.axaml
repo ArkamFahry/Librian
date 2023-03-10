@@ -8,8 +8,8 @@
         Width="800"
         Height="500"
         x:Class="trackx_desktop.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="TrackX"
+        Icon="/Assets/librian-logo.ico"
+        Title="Librian"
         TransparencyLevelHint="AcrylicBlur"
         Background="Transparent"
         ExtendClientAreaToDecorationsHint="True"
@@ -33,9 +33,9 @@
 
 		<Grid ColumnDefinitions="2*,*" RowDefinitions="30, *">
             <Grid Grid.Column="0" Grid.Row="1" Background="#55F2FF">
-                <Image Source="../Assets/trackx-logo.ico" Width="120" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20, 20, 0, 0"/>
+                <Image Source="../Assets/librian-logo.png" Width="170" Height="170" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20, 20, 0, 0"/>
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0">
-					<Label FontSize="45" FontWeight="Bold" FontFamily="JetBrainsMono NF" Content="TrackX"/>
+					<Label FontSize="45" FontWeight="Bold" FontFamily="JetBrainsMono NF" Content="Librian"/>
                     <Label FontSize="15" Margin="130, -15, 0, 10" FontWeight="Regular" FontFamily="JetBrainsMono NF" Content="By DevX"/>
                 </StackPanel>
             </Grid>
