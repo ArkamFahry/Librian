@@ -53,7 +53,7 @@ services:
     command:
       - --requirepass=Arkam2004
     ports:
-      - "6378:6379"
+      - "6379:6379"
     volumes:
       - dragonfly_data:/data 
 
@@ -67,9 +67,9 @@ services:
       - sql_server
     environment:
       PORT: 8070
-      DATABASE_TYPE: postgres
+      DATABASE_TYPE: sqlserver
       DATABASE_URL: sqlserver://SA:Arkam2004@sql_server:1433?database=trackx
-      REDIS_URL: redis://:Arkam2004@authorizer_dragonfly:6378
+      REDIS_URL: redis://:Arkam2004@dragonfly:6379
 
   postgres:
     image: postgres:latest
@@ -92,6 +92,7 @@ services:
       NSSQL_DATABASE_URL: Driver={ODBC Driver 18 for SQL Server};Server=tcp:sql_server,1433;Database=trackx;Uid=SA;Pwd=Arkam2004;Encrypt=optional
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true" 
       HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLE_REMOTE_SCHEMA_PERMISSIONS: "true"
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       HASURA_GRAPHQL_CONSOLE_ASSETS_DIR: /srv/console-assets
       HASURA_GRAPHQL_ADMIN_SECRET: Arkam2004

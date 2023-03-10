@@ -51,9 +51,7 @@ create table users
 (
     id                       varchar(255),
     email                    varchar(255) not null,
-    email_verified_at        datetime2,
     phone_number             varchar(255),
-    phone_number_verified_at datetime2,
     signup_methods           varchar(max) not null,
     nickname                 varchar(max),
     given_name               varchar(max),
