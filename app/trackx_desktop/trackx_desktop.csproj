@@ -47,8 +47,4 @@
     <Folder Include="Services\Graphql\Mutation\" />
     <Folder Include="Services\Graphql\Subscription\" />
   </ItemGroup>
-
-  <ItemGroup>
-    <None Include="GetUsers.graphql" />
-  </ItemGroup>
 </Project>
