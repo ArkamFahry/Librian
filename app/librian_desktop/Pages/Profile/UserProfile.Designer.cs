@@ -38,6 +38,7 @@
             FormStyle = FormStyles.StatusAndActionBar_None;
             Name = "UserProfile";
             Padding = new Padding(3, 0, 3, 3);
+            Sizable = false;
             Text = "UserProfile";
             ResumeLayout(false);
         }

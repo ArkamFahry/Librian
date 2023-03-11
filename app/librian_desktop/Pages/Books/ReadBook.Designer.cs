@@ -38,6 +38,7 @@
             FormStyle = FormStyles.StatusAndActionBar_None;
             Name = "ReadBook";
             Padding = new Padding(3, 0, 3, 3);
+            Sizable = false;
             Text = "ReadBooks";
             Theme = MaterialSkin2DotNet.MaterialSkinManager.Themes.DARK;
             ResumeLayout(false);

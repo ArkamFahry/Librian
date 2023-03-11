@@ -38,6 +38,7 @@
             FormStyle = FormStyles.StatusAndActionBar_None;
             Name = "UserHome";
             Padding = new Padding(3, 0, 3, 3);
+            Sizable = false;
             Text = "UserHome";
             Theme = MaterialSkin2DotNet.MaterialSkinManager.Themes.DARK;
             ResumeLayout(false);

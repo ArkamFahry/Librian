@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             BookSearchBox = new MaterialSkin2DotNet.Controls.MaterialTextBox2();
+            FlowPanelBookView = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // BookSearchBox
@@ -43,7 +44,7 @@
             BookSearchBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             BookSearchBox.HideSelection = true;
             BookSearchBox.LeadingIcon = null;
-            BookSearchBox.Location = new Point(61, 20);
+            BookSearchBox.Location = new Point(20, 20);
             BookSearchBox.MaxLength = 32767;
             BookSearchBox.MouseState = MaterialSkin2DotNet.MouseState.OUT;
             BookSearchBox.Name = "BookSearchBox";
@@ -55,22 +56,34 @@
             BookSearchBox.SelectionLength = 0;
             BookSearchBox.SelectionStart = 0;
             BookSearchBox.ShortcutsEnabled = true;
-            BookSearchBox.Size = new Size(933, 48);
+            BookSearchBox.Size = new Size(1020, 48);
             BookSearchBox.TabIndex = 0;
             BookSearchBox.TabStop = false;
             BookSearchBox.TextAlign = HorizontalAlignment.Left;
             BookSearchBox.TrailingIcon = null;
             BookSearchBox.UseSystemPasswordChar = false;
             // 
+            // FlowPanelBookView
+            // 
+            FlowPanelBookView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            FlowPanelBookView.AutoScroll = true;
+            FlowPanelBookView.BackColor = Color.Transparent;
+            FlowPanelBookView.Location = new Point(20, 87);
+            FlowPanelBookView.Name = "FlowPanelBookView";
+            FlowPanelBookView.Size = new Size(1020, 550);
+            FlowPanelBookView.TabIndex = 1;
+            // 
             // ViewBooks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1060, 655);
+            Controls.Add(FlowPanelBookView);
             Controls.Add(BookSearchBox);
             FormStyle = FormStyles.StatusAndActionBar_None;
             Name = "ViewBooks";
             Padding = new Padding(3, 0, 3, 3);
+            Sizable = false;
             Text = "ViewBooks";
             Theme = MaterialSkin2DotNet.MaterialSkinManager.Themes.DARK;
             ResumeLayout(false);
@@ -79,5 +92,6 @@
         #endregion
 
         private MaterialSkin2DotNet.Controls.MaterialTextBox2 BookSearchBox;
+        private FlowLayoutPanel FlowPanelBookView;
     }
 }

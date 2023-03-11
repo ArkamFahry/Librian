@@ -44,25 +44,25 @@
             // PnlSideBar
             // 
             PnlSideBar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            PnlSideBar.BackColor = Color.Black;
+            PnlSideBar.BackColor = Color.FromArgb(8, 36, 39);
             PnlSideBar.Controls.Add(BtnSignOut);
             PnlSideBar.Controls.Add(BtnManageBooks);
             PnlSideBar.Controls.Add(BtnManageUsers);
             PnlSideBar.Controls.Add(BtnProfile);
             PnlSideBar.Controls.Add(BtnBooks);
             PnlSideBar.Controls.Add(BtnHome);
-            PnlSideBar.Location = new Point(3, 65);
+            PnlSideBar.Location = new Point(-1, 65);
             PnlSideBar.Name = "PnlSideBar";
-            PnlSideBar.Size = new Size(216, 655);
+            PnlSideBar.Size = new Size(220, 655);
             PnlSideBar.TabIndex = 0;
             // 
             // BtnSignOut
             // 
             BtnSignOut.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BtnSignOut.BackColor = Color.Black;
+            BtnSignOut.BackColor = Color.FromArgb(8, 36, 39);
             BtnSignOut.FlatAppearance.BorderSize = 0;
-            BtnSignOut.FlatStyle = FlatStyle.Flat;
-            BtnSignOut.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnSignOut.FlatStyle = FlatStyle.Popup;
+            BtnSignOut.Font = new Font("Segoe UI Semilight", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             BtnSignOut.ForeColor = Color.White;
             BtnSignOut.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
             BtnSignOut.IconColor = Color.White;
@@ -70,7 +70,7 @@
             BtnSignOut.IconSize = 32;
             BtnSignOut.Location = new Point(0, 600);
             BtnSignOut.Name = "BtnSignOut";
-            BtnSignOut.Size = new Size(216, 51);
+            BtnSignOut.Size = new Size(217, 51);
             BtnSignOut.TabIndex = 5;
             BtnSignOut.Text = "Logout";
             BtnSignOut.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -81,16 +81,16 @@
             // 
             BtnManageBooks.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             BtnManageBooks.BackColor = Color.FromArgb(2, 42, 48);
-            BtnManageBooks.FlatStyle = FlatStyle.Flat;
+            BtnManageBooks.FlatStyle = FlatStyle.Popup;
             BtnManageBooks.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnManageBooks.ForeColor = Color.FromArgb(85, 242, 255);
+            BtnManageBooks.ForeColor = Color.White;
             BtnManageBooks.IconChar = FontAwesome.Sharp.IconChar.BookOpen;
-            BtnManageBooks.IconColor = Color.FromArgb(85, 242, 255);
+            BtnManageBooks.IconColor = Color.White;
             BtnManageBooks.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnManageBooks.IconSize = 32;
-            BtnManageBooks.Location = new Point(0, 231);
+            BtnManageBooks.Location = new Point(0, 198);
             BtnManageBooks.Name = "BtnManageBooks";
-            BtnManageBooks.Size = new Size(216, 51);
+            BtnManageBooks.Size = new Size(220, 51);
             BtnManageBooks.TabIndex = 4;
             BtnManageBooks.Text = "Mange Books";
             BtnManageBooks.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -101,16 +101,16 @@
             // 
             BtnManageUsers.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             BtnManageUsers.BackColor = Color.FromArgb(2, 42, 48);
-            BtnManageUsers.FlatStyle = FlatStyle.Flat;
+            BtnManageUsers.FlatStyle = FlatStyle.Popup;
             BtnManageUsers.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnManageUsers.ForeColor = Color.FromArgb(85, 242, 255);
+            BtnManageUsers.ForeColor = Color.White;
             BtnManageUsers.IconChar = FontAwesome.Sharp.IconChar.UserGroup;
-            BtnManageUsers.IconColor = Color.FromArgb(85, 242, 255);
+            BtnManageUsers.IconColor = Color.White;
             BtnManageUsers.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnManageUsers.IconSize = 32;
-            BtnManageUsers.Location = new Point(0, 174);
+            BtnManageUsers.Location = new Point(0, 148);
             BtnManageUsers.Name = "BtnManageUsers";
-            BtnManageUsers.Size = new Size(216, 51);
+            BtnManageUsers.Size = new Size(220, 51);
             BtnManageUsers.TabIndex = 3;
             BtnManageUsers.Text = "Mange Users";
             BtnManageUsers.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -121,16 +121,16 @@
             // 
             BtnProfile.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             BtnProfile.BackColor = Color.FromArgb(2, 42, 48);
-            BtnProfile.FlatStyle = FlatStyle.Flat;
+            BtnProfile.FlatStyle = FlatStyle.Popup;
             BtnProfile.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnProfile.ForeColor = Color.FromArgb(85, 242, 255);
+            BtnProfile.ForeColor = Color.White;
             BtnProfile.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
-            BtnProfile.IconColor = Color.FromArgb(85, 242, 255);
+            BtnProfile.IconColor = Color.White;
             BtnProfile.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnProfile.IconSize = 32;
-            BtnProfile.Location = new Point(0, 117);
+            BtnProfile.Location = new Point(0, 98);
             BtnProfile.Name = "BtnProfile";
-            BtnProfile.Size = new Size(216, 51);
+            BtnProfile.Size = new Size(220, 51);
             BtnProfile.TabIndex = 2;
             BtnProfile.Text = "Profile";
             BtnProfile.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -141,16 +141,16 @@
             // 
             BtnBooks.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             BtnBooks.BackColor = Color.FromArgb(2, 42, 48);
-            BtnBooks.FlatStyle = FlatStyle.Flat;
+            BtnBooks.FlatStyle = FlatStyle.Popup;
             BtnBooks.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnBooks.ForeColor = Color.FromArgb(85, 242, 255);
+            BtnBooks.ForeColor = Color.White;
             BtnBooks.IconChar = FontAwesome.Sharp.IconChar.Book;
-            BtnBooks.IconColor = Color.FromArgb(85, 242, 255);
+            BtnBooks.IconColor = Color.White;
             BtnBooks.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnBooks.IconSize = 32;
-            BtnBooks.Location = new Point(0, 60);
+            BtnBooks.Location = new Point(0, 48);
             BtnBooks.Name = "BtnBooks";
-            BtnBooks.Size = new Size(216, 51);
+            BtnBooks.Size = new Size(220, 51);
             BtnBooks.TabIndex = 1;
             BtnBooks.Text = "Books";
             BtnBooks.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -161,16 +161,16 @@
             // 
             BtnHome.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             BtnHome.BackColor = Color.FromArgb(2, 42, 48);
-            BtnHome.FlatStyle = FlatStyle.Flat;
+            BtnHome.FlatStyle = FlatStyle.Popup;
             BtnHome.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnHome.ForeColor = Color.FromArgb(85, 242, 255);
+            BtnHome.ForeColor = Color.White;
             BtnHome.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
-            BtnHome.IconColor = Color.FromArgb(85, 242, 255);
+            BtnHome.IconColor = Color.White;
             BtnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnHome.IconSize = 32;
-            BtnHome.Location = new Point(0, 3);
+            BtnHome.Location = new Point(0, -1);
             BtnHome.Name = "BtnHome";
-            BtnHome.Size = new Size(216, 51);
+            BtnHome.Size = new Size(220, 51);
             BtnHome.TabIndex = 0;
             BtnHome.Text = "Home";
             BtnHome.TextImageRelation = TextImageRelation.ImageBeforeText;

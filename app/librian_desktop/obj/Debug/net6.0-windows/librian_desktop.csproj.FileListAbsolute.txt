@@ -71,4 +71,4 @@ D:\Projects\Nibm\Gad\Librian\app\librian_desktop\bin\Debug\net6.0-windows\Micros
 D:\Projects\Nibm\Gad\Librian\app\librian_desktop\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Logging.dll
 D:\Projects\Nibm\Gad\Librian\app\librian_desktop\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Tokens.dll
 D:\Projects\Nibm\Gad\Librian\app\librian_desktop\bin\Debug\net6.0-windows\System.IdentityModel.Tokens.Jwt.dll
-D:\Projects\Nibm\Gad\Librian\app\librian_desktop\obj\Debug\net6.0-windows\librian_desktop.Components.Card.resources
+D:\Projects\Nibm\Gad\Librian\app\librian_desktop\obj\Debug\net6.0-windows\librian_desktop.Components.BookListCard.resources
