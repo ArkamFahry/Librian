@@ -21,58 +21,19 @@ services:
       MINIO_ROOT_USER: arkam
       MINIO_ROOT_PASSWORD: Arkam2004
     command: server --console-address ":9001" /data
- 
-  storage_service:
-    image: trackx/storage_service:v1
-    restart: always
-    depends_on:
-      - minio
-    ports:
-      - 8060:8060
-    environment:
-      PORT: 8060
-      MODE: release
-      PUBLIC_URL: http://localhost:9000
-      OBJECT_STORE_TYPE: minio
-      OBJECT_STORE_URL: http://minio:9000
-      ACCESS_KEY: arkam
-      SECRET_KEY: Arkam2004
-      USE_SSL: false
-      BUCKET_NAMES: profiles,issue-fixes-attachments,issue-atachments,project-atachments
-      AWS_REGION: "no-region"
-      OBJECT_LOCKING: true
-      PRESIGNED_PUT_URL_EXPIRY: 300s
-      PRESIGNED_GET_URL_EXPIRY: 600s
-      CHECK_BUCKET_CHANGES_TIMER: 10s
 
-  postgres:
-    image: postgres:latest
-    restart: always
-    volumes:
-    - postgres_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: Arkam2004
-  
-  hasura:
-    image: hasura/graphql-engine:latest
+  meilisearch:
+    image: getmeili/meilisearch
     restart: always
     ports:
-    - "8080:8080"
-    depends_on:
-    - postgres
+      - 7700:7700
+    volumes:
+      - meilisearch_data:/data
     environment:
-      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:Arkam2004@postgres:5432/postgres
-      PG_DATABASE_URL: postgres://postgres:Arkam2004@postgres:5432/postgres
-      MSSQL_DATABASE_URL: Driver={ODBC Driver 18 for SQL Server};Server=tcp:sql_server,1433;Database=model;Uid=SA;Pwd=Arkam2004;Encrypt=optional
-      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" 
-      HASURA_GRAPHQL_DEV_MODE: "true"
-      HASURA_GRAPHQL_ENABLE_REMOTE_SCHEMA_PERMISSIONS: "true"
-      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
-      HASURA_GRAPHQL_CONSOLE_ASSETS_DIR: /srv/console-assets
-      # HASURA_GRAPHQL_ADMIN_SECRET: Arkam2004
-      OBJECT_STORE_API: http://storage_service:8060/graphql
+      MEILI_MASTER_KEY: Arkam2004
+      MEILI_ENV: development
+      MEILI_DB_PATH: /data
 
 volumes:
   minio_data:
-  postgres_data:
-  dragonfly_data:
+  meilisearch_data:

@@ -1,19 +1,11 @@
-create database librian;
-
 -- user entities
 
 create table users
 (
     id                varchar(255)            default newid(),
     email             varchar(255)   not null,
-    password          varbinary(255) not null,
-    phone_number      varchar(255),
+    password_hash          varbinary(255) not null,
     user_name         varchar(255)   not null,
-    given_name        varchar(max),
-    middle_name       varchar(max),
-    family_name       varchar(max),
-    birth_date        varchar(max),
-    gender            varchar(max),
     picture           varchar(max),
     access_revoked    binary,
     access_revoked_at datetime2,
@@ -23,10 +15,6 @@ create table users
     unique (user_name),
     primary key (id)
 );
-go;
-create unique nonclustered index users_phone_number_unique
-    on users (phone_number)
-    where phone_number is not null;
 go;
 create trigger users_updated_at
     on users
