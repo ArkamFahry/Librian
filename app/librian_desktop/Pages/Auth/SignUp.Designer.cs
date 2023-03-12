@@ -35,6 +35,9 @@
             TxtSignUpUserName = new MaterialSkin2DotNet.Controls.MaterialMaskedTextBox();
             materialLabel3 = new MaterialSkin2DotNet.Controls.MaterialLabel();
             TxtSignUpPassword = new MaterialSkin2DotNet.Controls.MaterialMaskedTextBox();
+            LblUserNameError = new Label();
+            LblEmailError = new Label();
+            LblPasswordError = new Label();
             SuspendLayout();
             // 
             // BtnSignUp
@@ -218,11 +221,47 @@
             TxtSignUpPassword.UseSystemPasswordChar = false;
             TxtSignUpPassword.ValidatingType = null;
             // 
+            // LblUserNameError
+            // 
+            LblUserNameError.AutoSize = true;
+            LblUserNameError.BackColor = Color.Transparent;
+            LblUserNameError.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LblUserNameError.ForeColor = Color.Red;
+            LblUserNameError.Location = new Point(41, 91);
+            LblUserNameError.Name = "LblUserNameError";
+            LblUserNameError.Size = new Size(0, 20);
+            LblUserNameError.TabIndex = 12;
+            // 
+            // LblEmailError
+            // 
+            LblEmailError.AutoSize = true;
+            LblEmailError.BackColor = Color.Transparent;
+            LblEmailError.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LblEmailError.ForeColor = Color.Red;
+            LblEmailError.Location = new Point(41, 209);
+            LblEmailError.Name = "LblEmailError";
+            LblEmailError.Size = new Size(0, 20);
+            LblEmailError.TabIndex = 13;
+            // 
+            // LblPasswordError
+            // 
+            LblPasswordError.AutoSize = true;
+            LblPasswordError.BackColor = Color.Transparent;
+            LblPasswordError.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LblPasswordError.ForeColor = Color.Red;
+            LblPasswordError.Location = new Point(41, 320);
+            LblPasswordError.Name = "LblPasswordError";
+            LblPasswordError.Size = new Size(0, 20);
+            LblPasswordError.TabIndex = 14;
+            // 
             // SignUp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(400, 427);
+            Controls.Add(LblPasswordError);
+            Controls.Add(LblEmailError);
+            Controls.Add(LblUserNameError);
             Controls.Add(materialLabel3);
             Controls.Add(TxtSignUpPassword);
             Controls.Add(BtnSignUp);
@@ -248,5 +287,8 @@
         private MaterialSkin2DotNet.Controls.MaterialMaskedTextBox TxtSignUpUserName;
         private MaterialSkin2DotNet.Controls.MaterialLabel materialLabel3;
         private MaterialSkin2DotNet.Controls.MaterialMaskedTextBox TxtSignUpPassword;
+        private Label LblUserNameError;
+        private Label LblEmailError;
+        private Label LblPasswordError;
     }
 }

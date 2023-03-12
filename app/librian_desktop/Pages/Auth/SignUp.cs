@@ -8,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CheckPasswordStrength;
+using librian_desktop.Data.MainDb;
+using librian_desktop.Data.MainDb.Users;
+using librian_desktop.Utils;
 using MaterialSkin2DotNet.Controls;
 
 namespace librian_desktop.Auth
@@ -27,10 +31,44 @@ namespace librian_desktop.Auth
 
         private void BtnSignUp_Click(object sender, EventArgs e)
         {
-            var home = (Home)Application.OpenForms["Home"];
-            home.Hide();
-            var dashBoard = new DashBoard();
-            dashBoard.Show();
+            var checkIfEmailExist = new CheckIfEmailExits();
+
+            if (string.IsNullOrEmpty(TxtSignUpUserName.Text))
+            {
+                LblUserNameError.Text = "User Name Cannot Be Empty !";
+            }
+            else if (string.IsNullOrEmpty(TxtSignUpEmail.Text.Trim()))
+            {
+                LblEmailError.Text = "Email Cannot Be Empty !";
+            }
+            else if (checkIfEmailExist.EmailExits(TxtSignUpEmail.Text.Trim()))
+            {
+                LblEmailError.Text = "User With Email Already Exists !";
+            }
+            else if (string.IsNullOrEmpty(TxtSignUpPassword.Text.Trim()))
+            {
+                LblPasswordError.Text = "Password Cannot Be Empty !";
+            }
+            else if (TxtSignUpPassword.Text.Trim().PasswordStrength().Id < 2)
+            {
+                LblPasswordError.Text = "Password Is To Week !";
+            }
+            else
+            {
+                var user = new User
+                {
+                    Name = TxtSignUpUserName.Text,
+                    Email = TxtSignUpEmail.Text.Trim(),
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword(TxtSignUpPassword.Text.Trim())
+                };
+                var signUpUser = new UserRepo();
+                var createdUser = signUpUser.CreateUser(user);
+                
+                var home = (Home)Application.OpenForms["Home"];
+                home.Hide();
+                var dashBoard = new DashBoard();
+                dashBoard.Show();
+            }
         }
     }
 }

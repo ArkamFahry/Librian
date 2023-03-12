@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashBoard));
             PnlSideBar = new Panel();
             BtnSignOut = new FontAwesome.Sharp.IconButton();
             BtnManageBooks = new FontAwesome.Sharp.IconButton();
@@ -206,6 +207,7 @@
             Controls.Add(DashBoardRenderPanle);
             Controls.Add(pictureBox1);
             Controls.Add(PnlSideBar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "DashBoard";
             Text = "DashBoard";
             Theme = MaterialSkin2DotNet.MaterialSkinManager.Themes.DARK;

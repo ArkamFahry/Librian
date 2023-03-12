@@ -1,5 +1,6 @@
 ﻿using librian_desktop.Pages.Books;
 using librian_desktop.Pages.Home;
+using librian_desktop.Pages.ManageUsers;
 using librian_desktop.Pages.Profile;
 using MaterialSkin2DotNet;
 using MaterialSkin2DotNet.Controls;
@@ -60,6 +61,7 @@ namespace librian_desktop
 
         private void BtnManageUsers_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new ViewUsers());
             Text = "Manage Users";
         }
 

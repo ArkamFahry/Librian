@@ -6,19 +6,20 @@
   
   - Client Side
 
-    - AvaloniaUI based c# client desktop app
+    - Winform Desktop App With material ui and skia based chart rendering
 
   - Server Side
 
     - DataBase
 
       - Mssql Server
+      - Sql Connection String
+
+        - "Data Source={host},{port};Initial Catalog={DatabaseName};persist security info=True;User Id={Username};Password={Password};Trusted_Connection=False;Encrypt=False;
 
     - Object Storage
 
       - Minio (or any s3 compatible object store)
 
-    - Services
-
-      - Storage Service (written in golang)
-      - Crud Service (powered by hasura)
+    - Search Engine
+      - Meilisearch  

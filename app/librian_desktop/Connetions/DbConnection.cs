@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace librian_desktop.Connetions
 {
-    public static class DbConnection
+    public class DbConnection
     {
-        public static string Connection => ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
+        public static string ConnectionString => ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
     }
 }
