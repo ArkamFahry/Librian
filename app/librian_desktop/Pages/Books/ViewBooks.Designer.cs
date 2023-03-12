@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             FlowPanelBookView = new FlowLayoutPanel();
-            BooksSearchBox = new MaterialSkin2DotNet.Controls.MaterialTextBox2();
+            SearchBoxBooks = new MaterialSkin2DotNet.Controls.MaterialMaskedTextBox();
             SuspendLayout();
             // 
             // FlowPanelBookView
@@ -42,55 +42,68 @@
             FlowPanelBookView.Size = new Size(1020, 550);
             FlowPanelBookView.TabIndex = 1;
             // 
-            // BooksSearchBox
+            // SearchBoxBooks
             // 
-            BooksSearchBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            BooksSearchBox.AnimateReadOnly = false;
-            BooksSearchBox.AutoCompleteMode = AutoCompleteMode.None;
-            BooksSearchBox.AutoCompleteSource = AutoCompleteSource.None;
-            BooksSearchBox.BackgroundImageLayout = ImageLayout.None;
-            BooksSearchBox.CharacterCasing = CharacterCasing.Normal;
-            BooksSearchBox.Depth = 0;
-            BooksSearchBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            BooksSearchBox.HideSelection = true;
-            BooksSearchBox.LeadingIcon = null;
-            BooksSearchBox.Location = new Point(20, 22);
-            BooksSearchBox.MaxLength = 32767;
-            BooksSearchBox.MouseState = MaterialSkin2DotNet.MouseState.OUT;
-            BooksSearchBox.Name = "BooksSearchBox";
-            BooksSearchBox.PasswordChar = '\0';
-            BooksSearchBox.PrefixSuffixText = null;
-            BooksSearchBox.ReadOnly = false;
-            BooksSearchBox.RightToLeft = RightToLeft.No;
-            BooksSearchBox.SelectedText = "";
-            BooksSearchBox.SelectionLength = 0;
-            BooksSearchBox.SelectionStart = 0;
-            BooksSearchBox.ShortcutsEnabled = true;
-            BooksSearchBox.Size = new Size(1020, 48);
-            BooksSearchBox.TabIndex = 2;
-            BooksSearchBox.TabStop = false;
-            BooksSearchBox.TextAlign = HorizontalAlignment.Left;
-            BooksSearchBox.TrailingIcon = null;
-            BooksSearchBox.UseSystemPasswordChar = false;
+            SearchBoxBooks.AllowPromptAsInput = true;
+            SearchBoxBooks.AnimateReadOnly = false;
+            SearchBoxBooks.AsciiOnly = false;
+            SearchBoxBooks.BackgroundImageLayout = ImageLayout.None;
+            SearchBoxBooks.BeepOnError = false;
+            SearchBoxBooks.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            SearchBoxBooks.Depth = 0;
+            SearchBoxBooks.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            SearchBoxBooks.HidePromptOnLeave = false;
+            SearchBoxBooks.HideSelection = true;
+            SearchBoxBooks.InsertKeyMode = InsertKeyMode.Default;
+            SearchBoxBooks.LeadingIcon = null;
+            SearchBoxBooks.Location = new Point(20, 19);
+            SearchBoxBooks.Mask = "";
+            SearchBoxBooks.MaxLength = 32767;
+            SearchBoxBooks.MouseState = MaterialSkin2DotNet.MouseState.OUT;
+            SearchBoxBooks.Name = "SearchBoxBooks";
+            SearchBoxBooks.PasswordChar = '\0';
+            SearchBoxBooks.PrefixSuffixText = null;
+            SearchBoxBooks.PromptChar = '_';
+            SearchBoxBooks.ReadOnly = false;
+            SearchBoxBooks.RejectInputOnFirstFailure = false;
+            SearchBoxBooks.ResetOnPrompt = true;
+            SearchBoxBooks.ResetOnSpace = true;
+            SearchBoxBooks.RightToLeft = RightToLeft.No;
+            SearchBoxBooks.SelectedText = "";
+            SearchBoxBooks.SelectionLength = 0;
+            SearchBoxBooks.SelectionStart = 0;
+            SearchBoxBooks.ShortcutsEnabled = true;
+            SearchBoxBooks.Size = new Size(1020, 48);
+            SearchBoxBooks.SkipLiterals = true;
+            SearchBoxBooks.TabIndex = 4;
+            SearchBoxBooks.TabStop = false;
+            SearchBoxBooks.TextAlign = HorizontalAlignment.Left;
+            SearchBoxBooks.TextMaskFormat = MaskFormat.IncludeLiterals;
+            SearchBoxBooks.TrailingIcon = null;
+            SearchBoxBooks.UseSystemPasswordChar = false;
+            SearchBoxBooks.ValidatingType = null;
             // 
             // ViewBooks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
             ClientSize = new Size(1060, 655);
-            Controls.Add(BooksSearchBox);
+            Controls.Add(SearchBoxBooks);
             Controls.Add(FlowPanelBookView);
+            ForeColor = Color.Black;
             FormStyle = FormStyles.StatusAndActionBar_None;
             Name = "ViewBooks";
             Padding = new Padding(3, 0, 3, 3);
             Sizable = false;
             Text = "ViewBooks";
+            TextShade = MaterialSkin2DotNet.TextShade.BLACK;
             Theme = MaterialSkin2DotNet.MaterialSkinManager.Themes.DARK;
             ResumeLayout(false);
         }
 
         #endregion
         private FlowLayoutPanel FlowPanelBookView;
-        private MaterialSkin2DotNet.Controls.MaterialTextBox2 BooksSearchBox;
+        private MaterialSkin2DotNet.Controls.MaterialMaskedTextBox SearchBoxBooks;
     }
 }

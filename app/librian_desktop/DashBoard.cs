@@ -1,4 +1,5 @@
-﻿using librian_desktop.Pages.Books;
+﻿using librian_desktop.Data.MainDb;
+using librian_desktop.Pages.Books;
 using librian_desktop.Pages.Home;
 using librian_desktop.Pages.ManageUsers;
 using librian_desktop.Pages.Profile;
@@ -9,8 +10,23 @@ namespace librian_desktop
 {
     public partial class DashBoard : MaterialForm
     {
+        private User _user;
+
         public DashBoard()
         {
+            InitializeComponent();
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.EnforceBackcolorOnAllComponents = false;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Grey900, Primary.Grey600, Primary.Grey300, Accent.Teal100, TextShade.WHITE);
+        }
+
+        public DashBoard(User user)
+        {
+            _user = user;
+
             InitializeComponent();
 
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -37,6 +53,14 @@ namespace librian_desktop
 
         private void DashBoard_Load(object sender, EventArgs e)
         {
+            if (_user.Role != "admin")
+            {
+                BtnManageBooks.Enabled = false;
+                BtnManageBooks.Visible = false;
+                BtnManageUsers.Enabled = false;
+                BtnManageUsers.Visible = false;
+            }
+
             OpenChildForm(new UserHome());
             Text = "Home";
         }

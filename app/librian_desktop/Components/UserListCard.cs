@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +22,10 @@ namespace librian_desktop.Components
         private string _userName;
         private string _userEmail;
         private Image _userProfilePicture;
-        private DateTime _userCreatedAt;
-        private DateTime? _userUpdatedAt;
+        private string _userCreatedAt;
+        private string? _userUpdatedAt = "Not Updated";
 
+        [Category("Custom Props")]
         public string UserId
         {
             get => _userId;
@@ -64,26 +66,24 @@ namespace librian_desktop.Components
         }
 
         [Category("Custom Props")]
-        public DateTime UserCreatedAt
+        public string UserCreatedAt
         {
             get => _userCreatedAt;
             set
             {
                 _userCreatedAt = value;
-                var createdAt = value.ToString();
-                LabelCreatedAt.Text = createdAt;
+                LabelCreatedAt.Text = value;
             }
         }
 
         [Category("Custom Props")]
-        public DateTime? UserUpdatedAt
+        public string? UserUpdatedAt
         {
             get => _userUpdatedAt;
             set
             {
                 _userUpdatedAt = value;
-                var updatedAt = value.ToString();
-                LabelCreatedAt.Text = updatedAt;
+                LabelUpdatedAt.Text = value;
             }
         }
     }

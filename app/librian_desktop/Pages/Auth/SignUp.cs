@@ -29,25 +29,32 @@ namespace librian_desktop.Auth
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Grey900, Primary.Grey600, Primary.Grey300, Accent.Teal100, TextShade.WHITE);
         }
 
-        private void BtnSignUp_Click(object sender, EventArgs e)
+        private async void BtnSignUp_Click(object sender, EventArgs e)
+        {
+            await AuthSignUp();
+        }
+
+        public async Task AuthSignUp()
         {
             var checkIfEmailExist = new CheckIfEmailExits();
+            var crypto = new Crypto();
+            var userRepo = new UserRepo();
 
             if (string.IsNullOrEmpty(TxtSignUpUserName.Text))
             {
                 LblUserNameError.Text = "User Name Cannot Be Empty !";
             }
-            else if (string.IsNullOrEmpty(TxtSignUpEmail.Text.Trim()))
+            else if (string.IsNullOrEmpty(TxtSignUpEmail.Text.Trim().ToLower()))
             {
                 LblEmailError.Text = "Email Cannot Be Empty !";
-            }
-            else if (checkIfEmailExist.EmailExits(TxtSignUpEmail.Text.Trim()))
-            {
-                LblEmailError.Text = "User With Email Already Exists !";
             }
             else if (string.IsNullOrEmpty(TxtSignUpPassword.Text.Trim()))
             {
                 LblPasswordError.Text = "Password Cannot Be Empty !";
+            }
+            else if (await checkIfEmailExist.EmailExits(TxtSignUpEmail.Text.Trim().ToLower()))
+            {
+                LblEmailError.Text = "Email Already Exists !";
             }
             else if (TxtSignUpPassword.Text.Trim().PasswordStrength().Id < 2)
             {
@@ -55,20 +62,38 @@ namespace librian_desktop.Auth
             }
             else
             {
-                var user = new User
+                var createUser = new User
                 {
                     Name = TxtSignUpUserName.Text,
-                    Email = TxtSignUpEmail.Text.Trim(),
-                    PasswordHash = BCrypt.Net.BCrypt.HashPassword(TxtSignUpPassword.Text.Trim())
+                    Email = TxtSignUpEmail.Text.Trim().ToLower(),
+                    PasswordHash = crypto.HashPassword(TxtSignUpPassword.Text.Trim())
                 };
-                var signUpUser = new UserRepo();
-                var createdUser = signUpUser.CreateUser(user);
-                
+                await userRepo.CreateUser(createUser);
+                var createdUser = await userRepo.GetUserByEmail(createUser.Email);
+
+                if (createdUser == null) return;
+                ResetInputFields();
+                ResetErrorFields();
                 var home = (Home)Application.OpenForms["Home"];
                 home.Hide();
-                var dashBoard = new DashBoard();
+                var dashBoard = new DashBoard(createdUser);
                 dashBoard.Show();
             }
         }
+
+        private void ResetInputFields()
+        {
+            TxtSignUpUserName.Text = string.Empty;
+            TxtSignUpEmail.Text = string.Empty;
+            TxtSignUpPassword.Text = string.Empty;
+        }
+
+        private void ResetErrorFields()
+        {
+            LblUserNameError.Text = string.Empty;
+            LblEmailError.Text = string.Empty;
+            LblPasswordError.Text = string.Empty;
+        }
+
     }
 }

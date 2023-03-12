@@ -33,6 +33,8 @@
             materialLabel1 = new MaterialSkin2DotNet.Controls.MaterialLabel();
             materialLabel2 = new MaterialSkin2DotNet.Controls.MaterialLabel();
             BtnLogin = new MaterialSkin2DotNet.Controls.MaterialButton();
+            LblEmailError = new Label();
+            LblPasswordError = new Label();
             SuspendLayout();
             // 
             // TxtLoginEmail
@@ -49,7 +51,7 @@
             TxtLoginEmail.HideSelection = true;
             TxtLoginEmail.InsertKeyMode = InsertKeyMode.Default;
             TxtLoginEmail.LeadingIcon = null;
-            TxtLoginEmail.Location = new Point(37, 81);
+            TxtLoginEmail.Location = new Point(41, 81);
             TxtLoginEmail.Mask = "";
             TxtLoginEmail.MaxLength = 32767;
             TxtLoginEmail.MouseState = MaterialSkin2DotNet.MouseState.OUT;
@@ -90,7 +92,7 @@
             TxtLoignPassword.HideSelection = true;
             TxtLoignPassword.InsertKeyMode = InsertKeyMode.Default;
             TxtLoignPassword.LeadingIcon = null;
-            TxtLoignPassword.Location = new Point(37, 219);
+            TxtLoignPassword.Location = new Point(41, 219);
             TxtLoignPassword.Mask = "";
             TxtLoignPassword.MaxLength = 32767;
             TxtLoignPassword.MouseState = MaterialSkin2DotNet.MouseState.OUT;
@@ -122,7 +124,7 @@
             materialLabel1.AutoSize = true;
             materialLabel1.Depth = 0;
             materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(37, 59);
+            materialLabel1.Location = new Point(41, 59);
             materialLabel1.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
             materialLabel1.Name = "materialLabel1";
             materialLabel1.Size = new Size(41, 19);
@@ -134,7 +136,7 @@
             materialLabel2.AutoSize = true;
             materialLabel2.Depth = 0;
             materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel2.Location = new Point(37, 197);
+            materialLabel2.Location = new Point(41, 197);
             materialLabel2.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
             materialLabel2.Name = "materialLabel2";
             materialLabel2.Size = new Size(71, 19);
@@ -150,7 +152,7 @@
             BtnLogin.FlatAppearance.BorderColor = Color.FromArgb(192, 255, 255);
             BtnLogin.HighEmphasis = true;
             BtnLogin.Icon = null;
-            BtnLogin.Location = new Point(125, 339);
+            BtnLogin.Location = new Point(127, 339);
             BtnLogin.Margin = new Padding(4, 6, 4, 6);
             BtnLogin.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
             BtnLogin.Name = "BtnLogin";
@@ -163,11 +165,35 @@
             BtnLogin.UseVisualStyleBackColor = true;
             BtnLogin.Click += BtnLogin_Click;
             // 
+            // LblEmailError
+            // 
+            LblEmailError.AutoSize = true;
+            LblEmailError.BackColor = Color.Transparent;
+            LblEmailError.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LblEmailError.ForeColor = Color.Red;
+            LblEmailError.Location = new Point(41, 132);
+            LblEmailError.Name = "LblEmailError";
+            LblEmailError.Size = new Size(0, 20);
+            LblEmailError.TabIndex = 13;
+            // 
+            // LblPasswordError
+            // 
+            LblPasswordError.AutoSize = true;
+            LblPasswordError.BackColor = Color.Transparent;
+            LblPasswordError.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LblPasswordError.ForeColor = Color.Red;
+            LblPasswordError.Location = new Point(41, 270);
+            LblPasswordError.Name = "LblPasswordError";
+            LblPasswordError.Size = new Size(0, 20);
+            LblPasswordError.TabIndex = 14;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(400, 427);
+            Controls.Add(LblPasswordError);
+            Controls.Add(LblEmailError);
             Controls.Add(BtnLogin);
             Controls.Add(materialLabel2);
             Controls.Add(materialLabel1);
@@ -190,5 +216,7 @@
         private MaterialSkin2DotNet.Controls.MaterialLabel materialLabel1;
         private MaterialSkin2DotNet.Controls.MaterialLabel materialLabel2;
         private MaterialSkin2DotNet.Controls.MaterialButton BtnLogin;
+        private Label LblEmailError;
+        private Label LblPasswordError;
     }
 }

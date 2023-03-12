@@ -5,33 +5,88 @@ using System.Text;
 using System.Threading.Tasks;
 using librian_desktop.Data.SearchDb.Models;
 using librian_desktop.Data.SearchDb.Users;
+using Microsoft.EntityFrameworkCore;
 
 namespace librian_desktop.Data.MainDb.Users
 {
     public class UserRepo : IUserRepo
     {
-        public async Task<User> CreateUser(User user)
+        public async Task<bool> CreateUser(User user)
         {
+            user.Id = Guid.NewGuid().ToString();
             user.Email = user.Email.ToLower();
-            
+            user.CreatedAt = DateTime.Now;
+            user.Role = "user";
+
             await using var lbContext = new LibrianContext();
             lbContext.Users.Add(user);
             await lbContext.SaveChangesAsync();
 
-            var createdUser = lbContext.Users.Single(u => u.Id == user.Id);
-
             var indexUser = new UserIndexRepo();
             var iUser = new UserIndex
             {
-                Id = createdUser.Id,
-                Name = createdUser.Name,
-                Email = createdUser.Email,
-                CreatedAt = createdUser.CreatedAt,
-                UpdatedAt = createdUser.UpdatedAt,
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                Role = user.Role,
+                CreatedAt = user.CreatedAt.ToString(),
+                UpdatedAt = user.UpdatedAt.ToString(),
             };
-            await indexUser.CreateUser(iUser);
+            await indexUser.CreateUserIndex(iUser);
 
-            return createdUser;
+            return true;
         }
+
+        public async Task<bool> UpdateUser(User user)
+        {
+            user.Email = user.Email.ToLower();
+            user.UpdatedAt = DateTime.Now;
+
+            await using var lbContext = new LibrianContext();
+            lbContext.Users.Update(user);
+            await lbContext.SaveChangesAsync();
+            
+            var indexUser = new UserIndexRepo();
+            var iUser = new UserIndex
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                Role = user.Role,
+                CreatedAt = user.CreatedAt.ToString(),
+                UpdatedAt = user.UpdatedAt.ToString(),
+            };
+            await indexUser.UpdateUserIndex(iUser);
+
+            return true;
+        }
+
+        public async Task<bool> DeleteUser(User user)
+        {
+            await using var lbContext = new LibrianContext();
+            lbContext.Users.Remove(user);
+            await lbContext.SaveChangesAsync();
+
+            var indexUser = new UserIndexRepo();
+            await indexUser.DeleteUserIndex(user.Id);
+
+            return true;
+        }
+
+        public async Task<User?> GetUserByEmail(string email)
+        {
+            email = email.ToLower();
+            await using var lbContext = new LibrianContext();
+            var user = await lbContext.Users.SingleOrDefaultAsync(e => e.Email == email);
+            return user;
+        }
+
+        public async Task<User?> GetUserById(string id)
+        {
+            await using var lbContext = new LibrianContext();
+            var user = await lbContext.Users.SingleOrDefaultAsync(i => i.Id == id);
+            return user;
+        }
+        
     }
 }

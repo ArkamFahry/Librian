@@ -39,7 +39,7 @@
             PictureBookImage.BackColor = Color.Transparent;
             PictureBookImage.Location = new Point(3, 1);
             PictureBookImage.Name = "PictureBookImage";
-            PictureBookImage.Size = new Size(204, 197);
+            PictureBookImage.Size = new Size(204, 147);
             PictureBookImage.SizeMode = PictureBoxSizeMode.StretchImage;
             PictureBookImage.TabIndex = 3;
             PictureBookImage.TabStop = false;
@@ -61,11 +61,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
-            BackColor = Color.Black;
+            BackColor = Color.FromArgb(2, 42, 48);
             Controls.Add(LabelBookName);
             Controls.Add(PictureBookImage);
             Name = "BookListCard";
-            Size = new Size(995, 200);
+            Size = new Size(995, 150);
             ((System.ComponentModel.ISupportInitialize)PictureBookImage).EndInit();
             ResumeLayout(false);
             PerformLayout();

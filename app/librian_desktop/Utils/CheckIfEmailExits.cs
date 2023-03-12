@@ -4,18 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using librian_desktop.Data.MainDb;
+using librian_desktop.Data.MainDb.Users;
 
 namespace librian_desktop.Utils
 {
     public class CheckIfEmailExits
     {
-        public bool EmailExits(string email)
+        public async Task<bool> EmailExits(string email)
         {
+            var userRepo = new UserRepo();
+
             try
             {
-                using var lbContext = new LibrianContext();
-                var single = lbContext.Users.Single(e => e.Email == email);
-                if (single != null)
+                var exists = await userRepo.GetUserByEmail(email); 
+
+                if (exists != null)
                 {
                     return true;
                 }

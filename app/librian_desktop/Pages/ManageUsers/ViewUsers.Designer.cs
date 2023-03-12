@@ -28,41 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            UserSearchBox = new MaterialSkin2DotNet.Controls.MaterialTextBox2();
             FlowPanelUserView = new FlowLayoutPanel();
-            button1 = new Button();
+            SearchBoxUser = new MaterialSkin2DotNet.Controls.MaterialMaskedTextBox();
             SuspendLayout();
-            // 
-            // UserSearchBox
-            // 
-            UserSearchBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            UserSearchBox.AnimateReadOnly = false;
-            UserSearchBox.AutoCompleteMode = AutoCompleteMode.None;
-            UserSearchBox.AutoCompleteSource = AutoCompleteSource.None;
-            UserSearchBox.BackgroundImageLayout = ImageLayout.None;
-            UserSearchBox.CharacterCasing = CharacterCasing.Normal;
-            UserSearchBox.Depth = 0;
-            UserSearchBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            UserSearchBox.HideSelection = true;
-            UserSearchBox.LeadingIcon = null;
-            UserSearchBox.Location = new Point(19, 22);
-            UserSearchBox.MaxLength = 32767;
-            UserSearchBox.MouseState = MaterialSkin2DotNet.MouseState.OUT;
-            UserSearchBox.Name = "UserSearchBox";
-            UserSearchBox.PasswordChar = '\0';
-            UserSearchBox.PrefixSuffixText = null;
-            UserSearchBox.ReadOnly = false;
-            UserSearchBox.RightToLeft = RightToLeft.No;
-            UserSearchBox.SelectedText = "";
-            UserSearchBox.SelectionLength = 0;
-            UserSearchBox.SelectionStart = 0;
-            UserSearchBox.ShortcutsEnabled = true;
-            UserSearchBox.Size = new Size(1020, 48);
-            UserSearchBox.TabIndex = 1;
-            UserSearchBox.TabStop = false;
-            UserSearchBox.TextAlign = HorizontalAlignment.Left;
-            UserSearchBox.TrailingIcon = null;
-            UserSearchBox.UseSystemPasswordChar = false;
             // 
             // FlowPanelUserView
             // 
@@ -74,36 +42,66 @@
             FlowPanelUserView.Size = new Size(1020, 550);
             FlowPanelUserView.TabIndex = 2;
             // 
-            // button1
+            // SearchBoxUser
             // 
-            button1.Location = new Point(955, 37);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 3;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            SearchBoxUser.AllowPromptAsInput = true;
+            SearchBoxUser.AnimateReadOnly = false;
+            SearchBoxUser.AsciiOnly = false;
+            SearchBoxUser.BackgroundImageLayout = ImageLayout.None;
+            SearchBoxUser.BeepOnError = false;
+            SearchBoxUser.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            SearchBoxUser.Depth = 0;
+            SearchBoxUser.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            SearchBoxUser.HidePromptOnLeave = false;
+            SearchBoxUser.HideSelection = true;
+            SearchBoxUser.InsertKeyMode = InsertKeyMode.Default;
+            SearchBoxUser.LeadingIcon = null;
+            SearchBoxUser.Location = new Point(19, 19);
+            SearchBoxUser.Mask = "";
+            SearchBoxUser.MaxLength = 32767;
+            SearchBoxUser.MouseState = MaterialSkin2DotNet.MouseState.OUT;
+            SearchBoxUser.Name = "SearchBoxUser";
+            SearchBoxUser.PasswordChar = '\0';
+            SearchBoxUser.PrefixSuffixText = null;
+            SearchBoxUser.PromptChar = '_';
+            SearchBoxUser.ReadOnly = false;
+            SearchBoxUser.RejectInputOnFirstFailure = false;
+            SearchBoxUser.ResetOnPrompt = true;
+            SearchBoxUser.ResetOnSpace = true;
+            SearchBoxUser.RightToLeft = RightToLeft.No;
+            SearchBoxUser.SelectedText = "";
+            SearchBoxUser.SelectionLength = 0;
+            SearchBoxUser.SelectionStart = 0;
+            SearchBoxUser.ShortcutsEnabled = true;
+            SearchBoxUser.Size = new Size(1020, 48);
+            SearchBoxUser.SkipLiterals = true;
+            SearchBoxUser.TabIndex = 3;
+            SearchBoxUser.TabStop = false;
+            SearchBoxUser.TextAlign = HorizontalAlignment.Left;
+            SearchBoxUser.TextMaskFormat = MaskFormat.IncludeLiterals;
+            SearchBoxUser.TrailingIcon = null;
+            SearchBoxUser.UseSystemPasswordChar = false;
+            SearchBoxUser.ValidatingType = null;
+            SearchBoxUser.TextChanged += SearchBoxUser_TextChanged;
             // 
             // ViewUsers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1060, 655);
-            Controls.Add(button1);
+            Controls.Add(SearchBoxUser);
             Controls.Add(FlowPanelUserView);
-            Controls.Add(UserSearchBox);
             FormStyle = FormStyles.StatusAndActionBar_None;
             Name = "ViewUsers";
             Padding = new Padding(3, 0, 3, 3);
             Sizable = false;
             Text = "ViewUsers";
+            Theme = MaterialSkin2DotNet.MaterialSkinManager.Themes.DARK;
             ResumeLayout(false);
         }
 
         #endregion
-
-        private MaterialSkin2DotNet.Controls.MaterialTextBox2 UserSearchBox;
         private FlowLayoutPanel FlowPanelUserView;
-        private Button button1;
+        private MaterialSkin2DotNet.Controls.MaterialMaskedTextBox SearchBoxUser;
     }
 }

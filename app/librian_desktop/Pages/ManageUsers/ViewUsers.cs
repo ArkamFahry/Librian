@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Reactive.Threading.Tasks;
 using System.Text;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using librian_desktop.Components;
 using librian_desktop.Data.SearchDb.Users;
+using MaterialSkin2DotNet;
 using MaterialSkin2DotNet.Controls;
 
 namespace librian_desktop.Pages.ManageUsers
@@ -19,32 +21,40 @@ namespace librian_desktop.Pages.ManageUsers
         public ViewUsers()
         {
             InitializeComponent();
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.EnforceBackcolorOnAllComponents = false;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Grey900, Primary.Grey600, Primary.Grey300, Accent.Teal100, TextShade.WHITE);
         }
 
         public async Task PopulateUserPanel()
         {
             var userList = new UserIndexRepo();
 
-            var users = userList.GetUsers(UserSearchBox.Text);
+            FlowPanelUserView.Controls.Clear();
 
-            if (users == null) return;
-            if (users.Result.Count() <= 0) return;
-            var userListCard = new UserListCard[users.Result.Count()];
-
-            for (var i = 0; i <= users.Result.Count(); i++)
+            var users = await userList.SearchUserIndex(SearchBoxUser.Text);
+            var userListCard = new UserListCard[users.Count()];
+            if (users.Count() > 0)
             {
-                var user = users.Result.ElementAt(i);
-                userListCard[i] = new UserListCard();
-                userListCard[i].UserId = user.Id;
-                userListCard[i].UserName = user.Name;
-                userListCard[i].UserEmail = user.Email;
-                userListCard[i].UserCreatedAt = user.CreatedAt;
-                userListCard[i].UserUpdatedAt = user.UpdatedAt;
-                FlowPanelUserView.Controls.Add(userListCard[i]);
+
+                for (var i = 0; i < users.Count(); i++)
+                {
+                    var user = users.ElementAt(i);
+                    userListCard[i] = new UserListCard();
+                    userListCard[i].UserId = user.Id;
+                    userListCard[i].UserName = user.Name;
+                    userListCard[i].UserEmail = user.Email;
+                    userListCard[i].UserCreatedAt = user.CreatedAt;
+                    userListCard[i].UserUpdatedAt = user.UpdatedAt;
+                    FlowPanelUserView.Controls.Add(userListCard[i]);
+                }
             }
         }
-
-        private async void button1_Click(object sender, EventArgs e)
+        
+        private async void SearchBoxUser_TextChanged(object sender, EventArgs e)
         {
             await PopulateUserPanel();
         }
