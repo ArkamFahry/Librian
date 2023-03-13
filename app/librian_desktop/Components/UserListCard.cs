@@ -39,7 +39,7 @@ namespace librian_desktop.Components
             set
             {
                 _userName = value;
-                LabelUserName.Text = value;
+                LblName.Text = value;
             }
         }
 
@@ -50,7 +50,7 @@ namespace librian_desktop.Components
             set
             {
                 _userEmail = value;
-                LabelUserEmail.Text = value;
+                LblEmail.Text = value;
             }
         }
 
@@ -72,7 +72,7 @@ namespace librian_desktop.Components
             set
             {
                 _userCreatedAt = value;
-                LabelCreatedAt.Text = value;
+                LblCreatedAt.Text = value;
             }
         }
 
@@ -83,7 +83,11 @@ namespace librian_desktop.Components
             set
             {
                 _userUpdatedAt = value;
-                LabelUpdatedAt.Text = value;
+                LblUpdatedAt.Text = value;
+                if (LblUpdatedAt.Text == "")
+                {
+                    LblUpdatedAt.Text = "Not Updated";
+                }
             }
         }
     }

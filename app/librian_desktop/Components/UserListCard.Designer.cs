@@ -28,30 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            LabelUserName = new MaterialSkin2DotNet.Controls.MaterialLabel();
             ProfilePicture = new PictureBox();
-            LabelCreatedAt = new MaterialSkin2DotNet.Controls.MaterialLabel();
-            LabelUpdatedAt = new MaterialSkin2DotNet.Controls.MaterialLabel();
-            LabelUserEmail = new MaterialSkin2DotNet.Controls.MaterialLabel();
-            materialLabel1 = new MaterialSkin2DotNet.Controls.MaterialLabel();
-            materialLabel2 = new MaterialSkin2DotNet.Controls.MaterialLabel();
-            materialLabel3 = new MaterialSkin2DotNet.Controls.MaterialLabel();
-            materialLabel4 = new MaterialSkin2DotNet.Controls.MaterialLabel();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            LblUpdatedAt = new Label();
+            LblCreatedAt = new Label();
+            LblEmail = new Label();
+            LblName = new Label();
             ((System.ComponentModel.ISupportInitialize)ProfilePicture).BeginInit();
             SuspendLayout();
-            // 
-            // LabelUserName
-            // 
-            LabelUserName.AutoSize = true;
-            LabelUserName.Depth = 0;
-            LabelUserName.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            LabelUserName.Location = new Point(336, 12);
-            LabelUserName.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
-            LabelUserName.Name = "LabelUserName";
-            LabelUserName.Size = new Size(78, 19);
-            LabelUserName.TabIndex = 6;
-            LabelUserName.Text = "User Name";
-            LabelUserName.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // ProfilePicture
             // 
@@ -64,109 +51,91 @@
             ProfilePicture.TabIndex = 5;
             ProfilePicture.TabStop = false;
             // 
-            // LabelCreatedAt
+            // label1
             // 
-            LabelCreatedAt.AutoSize = true;
-            LabelCreatedAt.Depth = 0;
-            LabelCreatedAt.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            LabelCreatedAt.Location = new Point(335, 79);
-            LabelCreatedAt.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
-            LabelCreatedAt.Name = "LabelCreatedAt";
-            LabelCreatedAt.Size = new Size(74, 19);
-            LabelCreatedAt.TabIndex = 8;
-            LabelCreatedAt.Text = "Created At";
-            LabelCreatedAt.TextAlign = ContentAlignment.MiddleLeft;
+            label1.AutoSize = true;
+            label1.Location = new Point(227, 14);
+            label1.Name = "label1";
+            label1.Size = new Size(45, 15);
+            label1.TabIndex = 6;
+            label1.Text = "Name :";
             // 
-            // LabelUpdatedAt
+            // label2
             // 
-            LabelUpdatedAt.AutoSize = true;
-            LabelUpdatedAt.Depth = 0;
-            LabelUpdatedAt.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            LabelUpdatedAt.Location = new Point(335, 116);
-            LabelUpdatedAt.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
-            LabelUpdatedAt.Name = "LabelUpdatedAt";
-            LabelUpdatedAt.Size = new Size(79, 19);
-            LabelUpdatedAt.TabIndex = 9;
-            LabelUpdatedAt.Text = "Updated At";
-            LabelUpdatedAt.TextAlign = ContentAlignment.MiddleLeft;
+            label2.AutoSize = true;
+            label2.Location = new Point(227, 45);
+            label2.Name = "label2";
+            label2.Size = new Size(42, 15);
+            label2.TabIndex = 7;
+            label2.Text = "Email :";
             // 
-            // LabelUserEmail
+            // label3
             // 
-            LabelUserEmail.AutoSize = true;
-            LabelUserEmail.Depth = 0;
-            LabelUserEmail.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            LabelUserEmail.Location = new Point(335, 44);
-            LabelUserEmail.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
-            LabelUserEmail.Name = "LabelUserEmail";
-            LabelUserEmail.Size = new Size(76, 19);
-            LabelUserEmail.TabIndex = 10;
-            LabelUserEmail.Text = "User Email";
-            LabelUserEmail.TextAlign = ContentAlignment.MiddleLeft;
+            label3.AutoSize = true;
+            label3.Location = new Point(227, 78);
+            label3.Name = "label3";
+            label3.Size = new Size(69, 15);
+            label3.TabIndex = 8;
+            label3.Text = "Created At :";
             // 
-            // materialLabel1
+            // label4
             // 
-            materialLabel1.AutoSize = true;
-            materialLabel1.Depth = 0;
-            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(221, 12);
-            materialLabel1.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
-            materialLabel1.Name = "materialLabel1";
-            materialLabel1.Size = new Size(51, 19);
-            materialLabel1.TabIndex = 11;
-            materialLabel1.Text = "Name :";
-            materialLabel1.TextAlign = ContentAlignment.MiddleLeft;
+            label4.AutoSize = true;
+            label4.Location = new Point(227, 111);
+            label4.Name = "label4";
+            label4.Size = new Size(73, 15);
+            label4.TabIndex = 9;
+            label4.Text = "Updated At :";
             // 
-            // materialLabel2
+            // LblUpdatedAt
             // 
-            materialLabel2.AutoSize = true;
-            materialLabel2.Depth = 0;
-            materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel2.Location = new Point(221, 44);
-            materialLabel2.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
-            materialLabel2.Name = "materialLabel2";
-            materialLabel2.Size = new Size(49, 19);
-            materialLabel2.TabIndex = 12;
-            materialLabel2.Text = "Email :";
-            materialLabel2.TextAlign = ContentAlignment.MiddleLeft;
+            LblUpdatedAt.AutoSize = true;
+            LblUpdatedAt.Location = new Point(321, 111);
+            LblUpdatedAt.Name = "LblUpdatedAt";
+            LblUpdatedAt.Size = new Size(67, 15);
+            LblUpdatedAt.TabIndex = 13;
+            LblUpdatedAt.Text = "Updated At";
             // 
-            // materialLabel3
+            // LblCreatedAt
             // 
-            materialLabel3.AutoSize = true;
-            materialLabel3.Depth = 0;
-            materialLabel3.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel3.Location = new Point(221, 79);
-            materialLabel3.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
-            materialLabel3.Name = "materialLabel3";
-            materialLabel3.Size = new Size(78, 19);
-            materialLabel3.TabIndex = 13;
-            materialLabel3.Text = "CreatedAt :";
-            materialLabel3.TextAlign = ContentAlignment.MiddleLeft;
+            LblCreatedAt.AutoSize = true;
+            LblCreatedAt.Location = new Point(321, 78);
+            LblCreatedAt.Name = "LblCreatedAt";
+            LblCreatedAt.Size = new Size(63, 15);
+            LblCreatedAt.TabIndex = 12;
+            LblCreatedAt.Text = "Created At";
             // 
-            // materialLabel4
+            // LblEmail
             // 
-            materialLabel4.AutoSize = true;
-            materialLabel4.Depth = 0;
-            materialLabel4.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel4.Location = new Point(221, 117);
-            materialLabel4.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
-            materialLabel4.Name = "materialLabel4";
-            materialLabel4.Size = new Size(83, 19);
-            materialLabel4.TabIndex = 14;
-            materialLabel4.Text = "UpdatedAt :";
+            LblEmail.AutoSize = true;
+            LblEmail.Location = new Point(321, 45);
+            LblEmail.Name = "LblEmail";
+            LblEmail.Size = new Size(36, 15);
+            LblEmail.TabIndex = 11;
+            LblEmail.Text = "Email";
+            // 
+            // LblName
+            // 
+            LblName.AutoSize = true;
+            LblName.Location = new Point(321, 14);
+            LblName.Name = "LblName";
+            LblName.Size = new Size(39, 15);
+            LblName.TabIndex = 10;
+            LblName.Text = "Name";
             // 
             // UserListCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(2, 42, 48);
-            Controls.Add(materialLabel4);
-            Controls.Add(materialLabel3);
-            Controls.Add(materialLabel2);
-            Controls.Add(materialLabel1);
-            Controls.Add(LabelUserEmail);
-            Controls.Add(LabelUpdatedAt);
-            Controls.Add(LabelCreatedAt);
-            Controls.Add(LabelUserName);
+            Controls.Add(LblUpdatedAt);
+            Controls.Add(LblCreatedAt);
+            Controls.Add(LblEmail);
+            Controls.Add(LblName);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(ProfilePicture);
             Name = "UserListCard";
             Size = new Size(995, 150);
@@ -176,15 +145,14 @@
         }
 
         #endregion
-
-        private MaterialSkin2DotNet.Controls.MaterialLabel LabelUserName;
         private PictureBox ProfilePicture;
-        private MaterialSkin2DotNet.Controls.MaterialLabel LabelCreatedAt;
-        private MaterialSkin2DotNet.Controls.MaterialLabel LabelUpdatedAt;
-        private MaterialSkin2DotNet.Controls.MaterialLabel LabelUserEmail;
-        private MaterialSkin2DotNet.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin2DotNet.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin2DotNet.Controls.MaterialLabel materialLabel3;
-        private MaterialSkin2DotNet.Controls.MaterialLabel materialLabel4;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label LblUpdatedAt;
+        private Label LblCreatedAt;
+        private Label LblEmail;
+        private Label LblName;
     }
 }
