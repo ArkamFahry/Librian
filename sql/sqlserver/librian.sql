@@ -28,16 +28,15 @@ go;
 
 create table Users
 (
-    Id              varchar(255)                                default newId(),
-    Email           varchar(255) not null,
-    PasswordHash    varchar(255) not null,
-    Name            varchar(255) not null,
-    Picture         varchar(max),
-    Role            varchar(255) not null references Roles (Id) default 'user',
-    AccessRevoked   binary,
-    AccessRevokedAt datetime2,
-    CreatedAt       datetime2    not null                       default getdate(),
-    UpdatedAt       datetime2,
+    Id            varchar(255)                                default newId(),
+    Email         varchar(255) not null,
+    PasswordHash  varchar(255) not null,
+    Name          varchar(255) not null,
+    Picture       varchar(max),
+    Role          varchar(255) not null references Roles (Id) default 'user',
+    AccessRevoked datetime2,
+    CreatedAt     datetime2    not null                       default getdate(),
+    UpdatedAt     datetime2,
     unique (Email),
     primary key (Id)
 );
