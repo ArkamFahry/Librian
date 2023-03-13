@@ -15,5 +15,7 @@ namespace librian_desktop.Data.SearchDb.Models
         public string Email { get; set; }
 
         public string Role { get; set; }
+
+        public string? AccessRevoked { get; set; }
     }
 }

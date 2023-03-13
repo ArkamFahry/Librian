@@ -45,6 +45,7 @@
             // SearchBoxUser
             // 
             SearchBoxUser.AllowPromptAsInput = true;
+            SearchBoxUser.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             SearchBoxUser.AnimateReadOnly = false;
             SearchBoxUser.AsciiOnly = false;
             SearchBoxUser.BackgroundImageLayout = ImageLayout.None;
@@ -97,6 +98,7 @@
             Sizable = false;
             Text = "ViewUsers";
             Theme = MaterialSkin2DotNet.MaterialSkinManager.Themes.DARK;
+            Load += ViewUsers_Load;
             ResumeLayout(false);
         }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace librian_desktop.Connetions
 {
-    public class SearchEngineConnection
+    public class SeConnection
     {
         public static string Url => ConfigurationManager.ConnectionStrings["SearchEngineUrl"].ConnectionString;
 

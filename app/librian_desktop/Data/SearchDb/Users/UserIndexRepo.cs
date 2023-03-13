@@ -18,7 +18,7 @@ namespace librian_desktop.Data.SearchDb.Users
         {
             try
             {
-                var client = new MeilisearchClient(SearchEngineConnection.Url, SearchEngineConnection.MasterKey);
+                var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
                 var index = client.Index(UsersIndex);
                 var users = new[]
                 {
@@ -38,7 +38,7 @@ namespace librian_desktop.Data.SearchDb.Users
         {
             try
             {
-                var client = new MeilisearchClient(SearchEngineConnection.Url, SearchEngineConnection.MasterKey);
+                var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
                 var index = client.Index(UsersIndex);
                 var users = new[]
                 {
@@ -58,7 +58,7 @@ namespace librian_desktop.Data.SearchDb.Users
         {
             try
             {
-                var client = new MeilisearchClient(SearchEngineConnection.Url, SearchEngineConnection.MasterKey);
+                var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
                 var index = client.Index(UsersIndex);
                 await index.DeleteOneDocumentAsync(id);
                 return true;
@@ -74,7 +74,7 @@ namespace librian_desktop.Data.SearchDb.Users
             try
             {
 
-                var client = new MeilisearchClient(SearchEngineConnection.Url, SearchEngineConnection.MasterKey);
+                var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
                 var index = client.Index(UsersIndex);
                 var users = await index.SearchAsync<UserIndex>(query);
                 return users.Hits;
@@ -90,7 +90,7 @@ namespace librian_desktop.Data.SearchDb.Users
             try
             {
 
-                var client = new MeilisearchClient(SearchEngineConnection.Url, SearchEngineConnection.MasterKey);
+                var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
                 var index = client.Index(UsersIndex);
                 var users = await index.GetDocumentAsync<UserIndex>(id);
                 return users;

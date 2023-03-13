@@ -1,18 +1,10 @@
 ﻿using MaterialSkin2DotNet;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using CheckPasswordStrength;
 using librian_desktop.Data.MainDb;
 using librian_desktop.Data.MainDb.Users;
 using librian_desktop.Utils;
 using MaterialSkin2DotNet.Controls;
+using FontAwesome.Sharp;
 
 namespace librian_desktop.Auth
 {
@@ -68,8 +60,8 @@ namespace librian_desktop.Auth
                     Email = TxtSignUpEmail.Text.Trim().ToLower(),
                     PasswordHash = crypto.HashPassword(TxtSignUpPassword.Text.Trim())
                 };
-                await userRepo.CreateUser(createUser);
-                var createdUser = await userRepo.GetUserByEmail(createUser.Email);
+                await userRepo.CreateUserAsync(createUser);
+                var createdUser = await userRepo.GetUserByEmailAsync(createUser.Email);
 
                 if (createdUser == null) return;
                 ResetInputFields();
@@ -78,6 +70,20 @@ namespace librian_desktop.Auth
                 home.Hide();
                 var dashBoard = new DashBoard(createdUser);
                 dashBoard.Show();
+            }
+        }
+
+        private void BtnShowPassword_Click(object sender, EventArgs e)
+        {
+            if (TxtSignUpPassword.PasswordChar == '●')
+            {
+                TxtSignUpPassword.PasswordChar = '\0';
+                BtnShowPassword.IconChar = IconChar.EyeSlash;
+            }
+            else
+            {
+                TxtSignUpPassword.PasswordChar = '●';
+                BtnShowPassword.IconChar = IconChar.Eye;
             }
         }
 
@@ -94,6 +100,5 @@ namespace librian_desktop.Auth
             LblEmailError.Text = string.Empty;
             LblPasswordError.Text = string.Empty;
         }
-
     }
 }

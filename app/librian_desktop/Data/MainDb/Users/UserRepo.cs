@@ -11,7 +11,7 @@ namespace librian_desktop.Data.MainDb.Users
 {
     public class UserRepo : IUserRepo
     {
-        public async Task<bool> CreateUser(User user)
+        public async Task<bool> CreateUserAsync(User user)
         {
             user.Id = Guid.NewGuid().ToString();
             user.Email = user.Email.ToLower();
@@ -29,6 +29,7 @@ namespace librian_desktop.Data.MainDb.Users
                 Name = user.Name,
                 Email = user.Email,
                 Role = user.Role,
+                AccessRevoked = user.AccessRevoked.ToString(),
                 CreatedAt = user.CreatedAt.ToString(),
                 UpdatedAt = user.UpdatedAt.ToString(),
             };
@@ -37,7 +38,7 @@ namespace librian_desktop.Data.MainDb.Users
             return true;
         }
 
-        public async Task<bool> UpdateUser(User user)
+        public async Task<bool> UpdateUserAsync(User user)
         {
             user.Email = user.Email.ToLower();
             user.UpdatedAt = DateTime.Now;
@@ -53,6 +54,7 @@ namespace librian_desktop.Data.MainDb.Users
                 Name = user.Name,
                 Email = user.Email,
                 Role = user.Role,
+                AccessRevoked = user.AccessRevoked.ToString(),
                 CreatedAt = user.CreatedAt.ToString(),
                 UpdatedAt = user.UpdatedAt.ToString(),
             };
@@ -61,7 +63,7 @@ namespace librian_desktop.Data.MainDb.Users
             return true;
         }
 
-        public async Task<bool> DeleteUser(User user)
+        public async Task<bool> DeleteUserAsync(User user)
         {
             await using var lbContext = new LibrianContext();
             lbContext.Users.Remove(user);
@@ -73,7 +75,7 @@ namespace librian_desktop.Data.MainDb.Users
             return true;
         }
 
-        public async Task<User?> GetUserByEmail(string email)
+        public async Task<User?> GetUserByEmailAsync(string email)
         {
             email = email.ToLower();
             await using var lbContext = new LibrianContext();
@@ -81,7 +83,7 @@ namespace librian_desktop.Data.MainDb.Users
             return user;
         }
 
-        public async Task<User?> GetUserById(string id)
+        public async Task<User?> GetUserByIdAsync(string id)
         {
             await using var lbContext = new LibrianContext();
             var user = await lbContext.Users.SingleOrDefaultAsync(i => i.Id == id);

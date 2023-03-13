@@ -38,6 +38,7 @@
             LblUserNameError = new Label();
             LblEmailError = new Label();
             LblPasswordError = new Label();
+            BtnShowPassword = new FontAwesome.Sharp.IconButton();
             SuspendLayout();
             // 
             // BtnSignUp
@@ -67,7 +68,7 @@
             materialLabel2.AutoSize = true;
             materialLabel2.Depth = 0;
             materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel2.Location = new Point(41, 136);
+            materialLabel2.Location = new Point(18, 136);
             materialLabel2.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
             materialLabel2.Name = "materialLabel2";
             materialLabel2.Size = new Size(41, 19);
@@ -79,7 +80,7 @@
             materialLabel1.AutoSize = true;
             materialLabel1.Depth = 0;
             materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(41, 18);
+            materialLabel1.Location = new Point(18, 18);
             materialLabel1.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
             materialLabel1.Name = "materialLabel1";
             materialLabel1.Size = new Size(78, 19);
@@ -100,7 +101,7 @@
             TxtSignUpEmail.HideSelection = true;
             TxtSignUpEmail.InsertKeyMode = InsertKeyMode.Default;
             TxtSignUpEmail.LeadingIcon = null;
-            TxtSignUpEmail.Location = new Point(41, 158);
+            TxtSignUpEmail.Location = new Point(18, 158);
             TxtSignUpEmail.Mask = "";
             TxtSignUpEmail.MaxLength = 32767;
             TxtSignUpEmail.MouseState = MaterialSkin2DotNet.MouseState.OUT;
@@ -117,7 +118,7 @@
             TxtSignUpEmail.SelectionLength = 0;
             TxtSignUpEmail.SelectionStart = 0;
             TxtSignUpEmail.ShortcutsEnabled = true;
-            TxtSignUpEmail.Size = new Size(319, 48);
+            TxtSignUpEmail.Size = new Size(366, 48);
             TxtSignUpEmail.SkipLiterals = true;
             TxtSignUpEmail.TabIndex = 6;
             TxtSignUpEmail.TabStop = false;
@@ -141,7 +142,7 @@
             TxtSignUpUserName.HideSelection = true;
             TxtSignUpUserName.InsertKeyMode = InsertKeyMode.Default;
             TxtSignUpUserName.LeadingIcon = null;
-            TxtSignUpUserName.Location = new Point(41, 40);
+            TxtSignUpUserName.Location = new Point(18, 40);
             TxtSignUpUserName.Mask = "";
             TxtSignUpUserName.MaxLength = 32767;
             TxtSignUpUserName.MouseState = MaterialSkin2DotNet.MouseState.OUT;
@@ -158,7 +159,7 @@
             TxtSignUpUserName.SelectionLength = 0;
             TxtSignUpUserName.SelectionStart = 0;
             TxtSignUpUserName.ShortcutsEnabled = true;
-            TxtSignUpUserName.Size = new Size(319, 48);
+            TxtSignUpUserName.Size = new Size(366, 48);
             TxtSignUpUserName.SkipLiterals = true;
             TxtSignUpUserName.TabIndex = 5;
             TxtSignUpUserName.TabStop = false;
@@ -173,7 +174,7 @@
             materialLabel3.AutoSize = true;
             materialLabel3.Depth = 0;
             materialLabel3.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel3.Location = new Point(41, 247);
+            materialLabel3.Location = new Point(18, 247);
             materialLabel3.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
             materialLabel3.Name = "materialLabel3";
             materialLabel3.Size = new Size(71, 19);
@@ -194,12 +195,12 @@
             TxtSignUpPassword.HideSelection = true;
             TxtSignUpPassword.InsertKeyMode = InsertKeyMode.Default;
             TxtSignUpPassword.LeadingIcon = null;
-            TxtSignUpPassword.Location = new Point(41, 269);
+            TxtSignUpPassword.Location = new Point(18, 269);
             TxtSignUpPassword.Mask = "";
             TxtSignUpPassword.MaxLength = 32767;
             TxtSignUpPassword.MouseState = MaterialSkin2DotNet.MouseState.OUT;
             TxtSignUpPassword.Name = "TxtSignUpPassword";
-            TxtSignUpPassword.PasswordChar = '\0';
+            TxtSignUpPassword.PasswordChar = '●';
             TxtSignUpPassword.PrefixSuffixText = null;
             TxtSignUpPassword.PromptChar = '*';
             TxtSignUpPassword.ReadOnly = false;
@@ -211,7 +212,7 @@
             TxtSignUpPassword.SelectionLength = 0;
             TxtSignUpPassword.SelectionStart = 0;
             TxtSignUpPassword.ShortcutsEnabled = true;
-            TxtSignUpPassword.Size = new Size(319, 48);
+            TxtSignUpPassword.Size = new Size(366, 48);
             TxtSignUpPassword.SkipLiterals = true;
             TxtSignUpPassword.TabIndex = 10;
             TxtSignUpPassword.TabStop = false;
@@ -227,7 +228,7 @@
             LblUserNameError.BackColor = Color.Transparent;
             LblUserNameError.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LblUserNameError.ForeColor = Color.Red;
-            LblUserNameError.Location = new Point(41, 91);
+            LblUserNameError.Location = new Point(18, 91);
             LblUserNameError.Name = "LblUserNameError";
             LblUserNameError.Size = new Size(0, 20);
             LblUserNameError.TabIndex = 12;
@@ -238,7 +239,7 @@
             LblEmailError.BackColor = Color.Transparent;
             LblEmailError.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LblEmailError.ForeColor = Color.Red;
-            LblEmailError.Location = new Point(41, 209);
+            LblEmailError.Location = new Point(18, 209);
             LblEmailError.Name = "LblEmailError";
             LblEmailError.Size = new Size(0, 20);
             LblEmailError.TabIndex = 13;
@@ -249,16 +250,32 @@
             LblPasswordError.BackColor = Color.Transparent;
             LblPasswordError.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LblPasswordError.ForeColor = Color.Red;
-            LblPasswordError.Location = new Point(41, 320);
+            LblPasswordError.Location = new Point(18, 320);
             LblPasswordError.Name = "LblPasswordError";
             LblPasswordError.Size = new Size(0, 20);
             LblPasswordError.TabIndex = 14;
+            // 
+            // BtnShowPassword
+            // 
+            BtnShowPassword.BackColor = Color.Transparent;
+            BtnShowPassword.ForeColor = Color.Transparent;
+            BtnShowPassword.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            BtnShowPassword.IconColor = Color.Black;
+            BtnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            BtnShowPassword.IconSize = 25;
+            BtnShowPassword.Location = new Point(354, 281);
+            BtnShowPassword.Name = "BtnShowPassword";
+            BtnShowPassword.Size = new Size(25, 25);
+            BtnShowPassword.TabIndex = 18;
+            BtnShowPassword.UseVisualStyleBackColor = false;
+            BtnShowPassword.Click += BtnShowPassword_Click;
             // 
             // SignUp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(400, 427);
+            Controls.Add(BtnShowPassword);
             Controls.Add(LblPasswordError);
             Controls.Add(LblEmailError);
             Controls.Add(LblUserNameError);
@@ -290,5 +307,6 @@
         private Label LblUserNameError;
         private Label LblEmailError;
         private Label LblPasswordError;
+        private FontAwesome.Sharp.IconButton BtnShowPassword;
     }
 }

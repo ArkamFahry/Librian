@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using librian_desktop.Connetions;
 using Microsoft.EntityFrameworkCore;
 
 namespace librian_desktop.Data.MainDb;
@@ -34,15 +33,13 @@ public partial class LibrianContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer(DbConnection.ConnectionString);
+        => optionsBuilder.UseSqlServer("Data Source=localhost,1433;Initial Catalog=Librian;persist security info=True;User Id=SA;Password=Arkam2004;Trusted_Connection=False;Encrypt=False;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Author>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Authors__3214EC072AA9B634");
-
-            entity.ToTable(tb => tb.HasTrigger("AuthorsUpdatedAt"));
+            entity.HasKey(e => e.Id).HasName("PK__Authors__3214EC07950BE13B");
 
             entity.Property(e => e.Id)
                 .HasMaxLength(255)
@@ -55,9 +52,7 @@ public partial class LibrianContext : DbContext
 
         modelBuilder.Entity<Book>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Books__3214EC070221447C");
-
-            entity.ToTable(tb => tb.HasTrigger("BooksUpdatedAt"));
+            entity.HasKey(e => e.Id).HasName("PK__Books__3214EC07F24383DB");
 
             entity.Property(e => e.Id)
                 .HasMaxLength(255)
@@ -72,11 +67,9 @@ public partial class LibrianContext : DbContext
 
         modelBuilder.Entity<BookAuthor>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__BookAuth__3214EC07BF5763CE");
+            entity.HasKey(e => e.Id).HasName("PK__BookAuth__3214EC07A3C8F87E");
 
-            entity.ToTable(tb => tb.HasTrigger("BookAuthorsUpdatedAt"));
-
-            entity.HasIndex(e => new { e.BookId, e.AuthorId }, "UQ__BookAuth__6AED6DC562C97B01").IsUnique();
+            entity.HasIndex(e => new { e.BookId, e.AuthorId }, "UQ__BookAuth__6AED6DC58FEDF99E").IsUnique();
 
             entity.Property(e => e.Id)
                 .HasMaxLength(255)
@@ -93,19 +86,17 @@ public partial class LibrianContext : DbContext
             entity.HasOne(d => d.Author).WithMany(p => p.BookAuthors)
                 .HasForeignKey(d => d.AuthorId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__BookAutho__Autho__5CD6CB2B");
+                .HasConstraintName("FK__BookAutho__Autho__571DF1D5");
 
             entity.HasOne(d => d.Book).WithMany(p => p.BookAuthors)
                 .HasForeignKey(d => d.BookId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__BookAutho__BookI__5BE2A6F2");
+                .HasConstraintName("FK__BookAutho__BookI__5629CD9C");
         });
 
         modelBuilder.Entity<BookBorrower>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__BookBorr__3214EC07AE4F8A74");
-
-            entity.ToTable(tb => tb.HasTrigger("BookBorrowers_UpdatedAt"));
+            entity.HasKey(e => e.Id).HasName("PK__BookBorr__3214EC07F5566D21");
 
             entity.Property(e => e.Id)
                 .HasMaxLength(255)
@@ -122,21 +113,19 @@ public partial class LibrianContext : DbContext
             entity.HasOne(d => d.Book).WithMany(p => p.BookBorrowers)
                 .HasForeignKey(d => d.BookId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__BookBorro__BookI__6383C8BA");
+                .HasConstraintName("FK__BookBorro__BookI__5CD6CB2B");
 
             entity.HasOne(d => d.User).WithMany(p => p.BookBorrowers)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__BookBorro__UserI__628FA481");
+                .HasConstraintName("FK__BookBorro__UserI__5BE2A6F2");
         });
 
         modelBuilder.Entity<BookCategory>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__BookCate__3214EC073A02D7E6");
+            entity.HasKey(e => e.Id).HasName("PK__BookCate__3214EC07A79FC025");
 
-            entity.ToTable(tb => tb.HasTrigger("BookCategoriesUpdatedAt"));
-
-            entity.HasIndex(e => new { e.BookId, e.CategoryId }, "UQ__BookCate__9C7051A635A0BD2B").IsUnique();
+            entity.HasIndex(e => new { e.BookId, e.CategoryId }, "UQ__BookCate__9C7051A63472DD78").IsUnique();
 
             entity.Property(e => e.Id)
                 .HasMaxLength(255)
@@ -153,21 +142,19 @@ public partial class LibrianContext : DbContext
             entity.HasOne(d => d.Book).WithMany(p => p.BookCategories)
                 .HasForeignKey(d => d.BookId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__BookCateg__BookI__4F7CD00D");
+                .HasConstraintName("FK__BookCateg__BookI__4BAC3F29");
 
             entity.HasOne(d => d.Category).WithMany(p => p.BookCategories)
                 .HasForeignKey(d => d.CategoryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__BookCateg__Categ__5070F446");
+                .HasConstraintName("FK__BookCateg__Categ__4CA06362");
         });
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Categori__3214EC077EA4858E");
+            entity.HasKey(e => e.Id).HasName("PK__Categori__3214EC071D73CDE6");
 
-            entity.ToTable(tb => tb.HasTrigger("CategoriesUpdatedAt"));
-
-            entity.HasIndex(e => e.Name, "UQ__Categori__737584F68DCB7F80").IsUnique();
+            entity.HasIndex(e => e.Name, "UQ__Categori__737584F6D49BA436").IsUnique();
 
             entity.Property(e => e.Id)
                 .HasMaxLength(255)
@@ -181,9 +168,7 @@ public partial class LibrianContext : DbContext
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC07C4EBFE2B");
-
-            entity.ToTable(tb => tb.HasTrigger("RolesUpdatedAt"));
+            entity.HasKey(e => e.Id).HasName("PK__Roles__3214EC0772C7797B");
 
             entity.Property(e => e.Id)
                 .HasMaxLength(255)
@@ -193,19 +178,14 @@ public partial class LibrianContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Users__3214EC07BDCAB149");
+            entity.HasKey(e => e.Id).HasName("PK__Users__3214EC07E3FD27CA");
 
-            entity.ToTable(tb => tb.HasTrigger("UsersUpdatedAt"));
-
-            entity.HasIndex(e => e.Email, "UQ__Users__A9D1053479EC5417").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Users__A9D105347D04D07A").IsUnique();
 
             entity.Property(e => e.Id)
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasDefaultValueSql("(newid())");
-            entity.Property(e => e.AccessRevoked)
-                .HasMaxLength(1)
-                .IsFixedLength();
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.Email)
                 .HasMaxLength(255)
@@ -225,7 +205,7 @@ public partial class LibrianContext : DbContext
             entity.HasOne(d => d.RoleNavigation).WithMany(p => p.Users)
                 .HasForeignKey(d => d.Role)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Users__Role__3D5E1FD2");
+                .HasConstraintName("FK__Users__Role__3C69FB99");
         });
 
         OnModelCreatingPartial(modelBuilder);

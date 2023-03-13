@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using librian_desktop.Pages.ManageUsers;
 
 namespace librian_desktop.Components
 {
@@ -24,6 +25,33 @@ namespace librian_desktop.Components
         private Image _userProfilePicture;
         private string _userCreatedAt;
         private string? _userUpdatedAt = "Not Updated";
+
+        private void UserListCard_MouseEnter(object sender, EventArgs e)
+        {
+            BackColor = Color.FromArgb(15, 2, 36);
+        }
+
+        private void UserListCard_MouseHover(object sender, EventArgs e)
+        {
+            BackColor = Color.FromArgb(15, 2, 36);
+        }
+
+        private void UserListCard_MouseLeave(object sender, EventArgs e)
+        {
+            BackColor = Color.FromArgb(2, 42, 48);
+        }
+
+        private void BtnEditUser_Click(object sender, EventArgs e)
+        {
+            var editUser = new EditUser(_userId);
+            editUser.ShowDialog();
+        }
+
+        private void BtnUserInfo_Click(object sender, EventArgs e)
+        {
+            var userInfo = new UserInfo(_userId);
+            userInfo.ShowDialog();
+        }
 
         [Category("Custom Props")]
         public string UserId

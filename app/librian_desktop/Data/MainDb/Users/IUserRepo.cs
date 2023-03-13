@@ -8,14 +8,14 @@ namespace librian_desktop.Data.MainDb.Users
 {
     public interface IUserRepo 
     {
-        Task<bool> CreateUser(User user);
+        Task<bool> CreateUserAsync(User user);
 
-        Task<bool> UpdateUser(User user);
+        Task<bool> UpdateUserAsync(User user);
 
-        Task<bool> DeleteUser(User user);
+        Task<bool> DeleteUserAsync(User user);
 
-        Task<User?> GetUserByEmail(string email);
+        Task<User?> GetUserByEmailAsync(string email);
 
-        Task<User?> GetUserById(string id);
+        Task<User?> GetUserByIdAsync(string id);
     }
 }

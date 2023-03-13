@@ -29,6 +29,16 @@ namespace librian_desktop.Pages.ManageUsers
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Grey900, Primary.Grey600, Primary.Grey300, Accent.Teal100, TextShade.WHITE);
         }
 
+        private async void ViewUsers_Load(object sender, EventArgs e)
+        {
+            await PopulateUserPanel();
+        }
+
+        private async void SearchBoxUser_TextChanged(object sender, EventArgs e)
+        {
+            await PopulateUserPanel();
+        }
+
         public async Task PopulateUserPanel()
         {
             var userList = new UserIndexRepo();
@@ -52,11 +62,6 @@ namespace librian_desktop.Pages.ManageUsers
                     FlowPanelUserView.Controls.Add(userListCard[i]);
                 }
             }
-        }
-        
-        private async void SearchBoxUser_TextChanged(object sender, EventArgs e)
-        {
-            await PopulateUserPanel();
         }
     }
 }

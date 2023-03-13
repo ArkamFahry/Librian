@@ -102,7 +102,9 @@ namespace librian_desktop
 
         private void BtnSignOut_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            var home = (Home)Application.OpenForms["Home"];
+            home.Show();
+            Close();
         }
     }
 }

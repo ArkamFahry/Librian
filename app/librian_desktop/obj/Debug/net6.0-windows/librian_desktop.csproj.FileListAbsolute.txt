@@ -113,3 +113,5 @@ D:\Projects\Nibm\Gad\Librian\app\librian_desktop\obj\Debug\net6.0-windows\libria
 D:\Projects\Nibm\Gad\Librian\app\librian_desktop\bin\Debug\net6.0-windows\BCrypt.Net-Next.dll
 D:\Projects\Nibm\Gad\Librian\app\librian_desktop\bin\Debug\net6.0-windows\CheckPasswordStrength.dll
 D:\Projects\Nibm\Gad\Librian\app\librian_desktop\obj\Debug\net6.0-windows\librian_desktop.Pages.ManageUsers.ViewUsers.resources
+D:\Projects\Nibm\Gad\Librian\app\librian_desktop\obj\Debug\net6.0-windows\librian_desktop.Pages.ManageUsers.EditUser.resources
+D:\Projects\Nibm\Gad\Librian\app\librian_desktop\obj\Debug\net6.0-windows\librian_desktop.Pages.ManageUsers.UserInfo.resources

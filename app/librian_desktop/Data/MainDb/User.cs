@@ -17,9 +17,7 @@ public partial class User
 
     public string Role { get; set; } = null!;
 
-    public byte[]? AccessRevoked { get; set; }
-
-    public DateTime? AccessRevokedAt { get; set; }
+    public DateTime? AccessRevoked { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

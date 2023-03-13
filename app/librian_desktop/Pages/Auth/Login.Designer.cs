@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             TxtLoginEmail = new MaterialSkin2DotNet.Controls.MaterialMaskedTextBox();
-            TxtLoignPassword = new MaterialSkin2DotNet.Controls.MaterialMaskedTextBox();
+            TxtLoginPassword = new MaterialSkin2DotNet.Controls.MaterialMaskedTextBox();
             materialLabel1 = new MaterialSkin2DotNet.Controls.MaterialLabel();
             materialLabel2 = new MaterialSkin2DotNet.Controls.MaterialLabel();
             BtnLogin = new MaterialSkin2DotNet.Controls.MaterialButton();
             LblEmailError = new Label();
             LblPasswordError = new Label();
+            BtnShowPassword = new FontAwesome.Sharp.IconButton();
             SuspendLayout();
             // 
             // TxtLoginEmail
@@ -51,7 +52,7 @@
             TxtLoginEmail.HideSelection = true;
             TxtLoginEmail.InsertKeyMode = InsertKeyMode.Default;
             TxtLoginEmail.LeadingIcon = null;
-            TxtLoginEmail.Location = new Point(41, 81);
+            TxtLoginEmail.Location = new Point(17, 81);
             TxtLoginEmail.Mask = "";
             TxtLoginEmail.MaxLength = 32767;
             TxtLoginEmail.MouseState = MaterialSkin2DotNet.MouseState.OUT;
@@ -68,7 +69,7 @@
             TxtLoginEmail.SelectionLength = 0;
             TxtLoginEmail.SelectionStart = 0;
             TxtLoginEmail.ShortcutsEnabled = true;
-            TxtLoginEmail.Size = new Size(319, 48);
+            TxtLoginEmail.Size = new Size(367, 48);
             TxtLoginEmail.SkipLiterals = true;
             TxtLoginEmail.TabIndex = 0;
             TxtLoginEmail.TabStop = false;
@@ -78,53 +79,53 @@
             TxtLoginEmail.UseSystemPasswordChar = false;
             TxtLoginEmail.ValidatingType = null;
             // 
-            // TxtLoignPassword
+            // TxtLoginPassword
             // 
-            TxtLoignPassword.AllowPromptAsInput = true;
-            TxtLoignPassword.AnimateReadOnly = false;
-            TxtLoignPassword.AsciiOnly = false;
-            TxtLoignPassword.BackgroundImageLayout = ImageLayout.None;
-            TxtLoignPassword.BeepOnError = false;
-            TxtLoignPassword.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
-            TxtLoignPassword.Depth = 0;
-            TxtLoignPassword.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            TxtLoignPassword.HidePromptOnLeave = false;
-            TxtLoignPassword.HideSelection = true;
-            TxtLoignPassword.InsertKeyMode = InsertKeyMode.Default;
-            TxtLoignPassword.LeadingIcon = null;
-            TxtLoignPassword.Location = new Point(41, 219);
-            TxtLoignPassword.Mask = "";
-            TxtLoignPassword.MaxLength = 32767;
-            TxtLoignPassword.MouseState = MaterialSkin2DotNet.MouseState.OUT;
-            TxtLoignPassword.Name = "TxtLoignPassword";
-            TxtLoignPassword.PasswordChar = '\0';
-            TxtLoignPassword.PrefixSuffixText = null;
-            TxtLoignPassword.PromptChar = '*';
-            TxtLoignPassword.ReadOnly = false;
-            TxtLoignPassword.RejectInputOnFirstFailure = false;
-            TxtLoignPassword.ResetOnPrompt = true;
-            TxtLoignPassword.ResetOnSpace = true;
-            TxtLoignPassword.RightToLeft = RightToLeft.No;
-            TxtLoignPassword.SelectedText = "";
-            TxtLoignPassword.SelectionLength = 0;
-            TxtLoignPassword.SelectionStart = 0;
-            TxtLoignPassword.ShortcutsEnabled = true;
-            TxtLoignPassword.Size = new Size(319, 48);
-            TxtLoignPassword.SkipLiterals = true;
-            TxtLoignPassword.TabIndex = 1;
-            TxtLoignPassword.TabStop = false;
-            TxtLoignPassword.TextAlign = HorizontalAlignment.Left;
-            TxtLoignPassword.TextMaskFormat = MaskFormat.IncludeLiterals;
-            TxtLoignPassword.TrailingIcon = null;
-            TxtLoignPassword.UseSystemPasswordChar = false;
-            TxtLoignPassword.ValidatingType = null;
+            TxtLoginPassword.AllowPromptAsInput = true;
+            TxtLoginPassword.AnimateReadOnly = false;
+            TxtLoginPassword.AsciiOnly = false;
+            TxtLoginPassword.BackgroundImageLayout = ImageLayout.None;
+            TxtLoginPassword.BeepOnError = false;
+            TxtLoginPassword.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            TxtLoginPassword.Depth = 0;
+            TxtLoginPassword.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            TxtLoginPassword.HidePromptOnLeave = false;
+            TxtLoginPassword.HideSelection = true;
+            TxtLoginPassword.InsertKeyMode = InsertKeyMode.Default;
+            TxtLoginPassword.LeadingIcon = null;
+            TxtLoginPassword.Location = new Point(17, 219);
+            TxtLoginPassword.Mask = "";
+            TxtLoginPassword.MaxLength = 32767;
+            TxtLoginPassword.MouseState = MaterialSkin2DotNet.MouseState.OUT;
+            TxtLoginPassword.Name = "TxtLoginPassword";
+            TxtLoginPassword.PasswordChar = '●';
+            TxtLoginPassword.PrefixSuffixText = null;
+            TxtLoginPassword.PromptChar = '*';
+            TxtLoginPassword.ReadOnly = false;
+            TxtLoginPassword.RejectInputOnFirstFailure = false;
+            TxtLoginPassword.ResetOnPrompt = true;
+            TxtLoginPassword.ResetOnSpace = true;
+            TxtLoginPassword.RightToLeft = RightToLeft.No;
+            TxtLoginPassword.SelectedText = "";
+            TxtLoginPassword.SelectionLength = 0;
+            TxtLoginPassword.SelectionStart = 0;
+            TxtLoginPassword.ShortcutsEnabled = true;
+            TxtLoginPassword.Size = new Size(367, 48);
+            TxtLoginPassword.SkipLiterals = true;
+            TxtLoginPassword.TabIndex = 1;
+            TxtLoginPassword.TabStop = false;
+            TxtLoginPassword.TextAlign = HorizontalAlignment.Left;
+            TxtLoginPassword.TextMaskFormat = MaskFormat.IncludeLiterals;
+            TxtLoginPassword.TrailingIcon = null;
+            TxtLoginPassword.UseSystemPasswordChar = false;
+            TxtLoginPassword.ValidatingType = null;
             // 
             // materialLabel1
             // 
             materialLabel1.AutoSize = true;
             materialLabel1.Depth = 0;
             materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(41, 59);
+            materialLabel1.Location = new Point(17, 59);
             materialLabel1.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
             materialLabel1.Name = "materialLabel1";
             materialLabel1.Size = new Size(41, 19);
@@ -136,7 +137,7 @@
             materialLabel2.AutoSize = true;
             materialLabel2.Depth = 0;
             materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel2.Location = new Point(41, 197);
+            materialLabel2.Location = new Point(17, 197);
             materialLabel2.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
             materialLabel2.Name = "materialLabel2";
             materialLabel2.Size = new Size(71, 19);
@@ -152,7 +153,7 @@
             BtnLogin.FlatAppearance.BorderColor = Color.FromArgb(192, 255, 255);
             BtnLogin.HighEmphasis = true;
             BtnLogin.Icon = null;
-            BtnLogin.Location = new Point(127, 339);
+            BtnLogin.Location = new Point(128, 339);
             BtnLogin.Margin = new Padding(4, 6, 4, 6);
             BtnLogin.MouseState = MaterialSkin2DotNet.MouseState.HOVER;
             BtnLogin.Name = "BtnLogin";
@@ -171,7 +172,7 @@
             LblEmailError.BackColor = Color.Transparent;
             LblEmailError.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LblEmailError.ForeColor = Color.Red;
-            LblEmailError.Location = new Point(41, 132);
+            LblEmailError.Location = new Point(17, 132);
             LblEmailError.Name = "LblEmailError";
             LblEmailError.Size = new Size(0, 20);
             LblEmailError.TabIndex = 13;
@@ -182,22 +183,38 @@
             LblPasswordError.BackColor = Color.Transparent;
             LblPasswordError.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LblPasswordError.ForeColor = Color.Red;
-            LblPasswordError.Location = new Point(41, 270);
+            LblPasswordError.Location = new Point(17, 270);
             LblPasswordError.Name = "LblPasswordError";
             LblPasswordError.Size = new Size(0, 20);
             LblPasswordError.TabIndex = 14;
+            // 
+            // BtnShowPassword
+            // 
+            BtnShowPassword.BackColor = Color.Transparent;
+            BtnShowPassword.ForeColor = Color.Transparent;
+            BtnShowPassword.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            BtnShowPassword.IconColor = Color.Black;
+            BtnShowPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            BtnShowPassword.IconSize = 25;
+            BtnShowPassword.Location = new Point(353, 231);
+            BtnShowPassword.Name = "BtnShowPassword";
+            BtnShowPassword.Size = new Size(25, 25);
+            BtnShowPassword.TabIndex = 19;
+            BtnShowPassword.UseVisualStyleBackColor = false;
+            BtnShowPassword.Click += BtnShowPassword_Click;
             // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(400, 427);
+            Controls.Add(BtnShowPassword);
             Controls.Add(LblPasswordError);
             Controls.Add(LblEmailError);
             Controls.Add(BtnLogin);
             Controls.Add(materialLabel2);
             Controls.Add(materialLabel1);
-            Controls.Add(TxtLoignPassword);
+            Controls.Add(TxtLoginPassword);
             Controls.Add(TxtLoginEmail);
             FormStyle = FormStyles.StatusAndActionBar_None;
             Name = "Login";
@@ -212,11 +229,12 @@
         #endregion
 
         private MaterialSkin2DotNet.Controls.MaterialMaskedTextBox TxtLoginEmail;
-        private MaterialSkin2DotNet.Controls.MaterialMaskedTextBox TxtLoignPassword;
+        private MaterialSkin2DotNet.Controls.MaterialMaskedTextBox TxtLoginPassword;
         private MaterialSkin2DotNet.Controls.MaterialLabel materialLabel1;
         private MaterialSkin2DotNet.Controls.MaterialLabel materialLabel2;
         private MaterialSkin2DotNet.Controls.MaterialButton BtnLogin;
         private Label LblEmailError;
         private Label LblPasswordError;
+        private FontAwesome.Sharp.IconButton BtnShowPassword;
     }
 }

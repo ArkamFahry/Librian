@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using librian_desktop.Data.MainDb;
-using librian_desktop.Data.MainDb.Users;
+﻿using librian_desktop.Data.MainDb.Users;
 
 namespace librian_desktop.Utils
 {
@@ -16,7 +10,7 @@ namespace librian_desktop.Utils
 
             try
             {
-                var exists = await userRepo.GetUserByEmail(email); 
+                var exists = await userRepo.GetUserByEmailAsync(email);
 
                 if (exists != null)
                 {

@@ -1,4 +1,5 @@
-﻿using librian_desktop.Data.MainDb.Users;
+﻿using FontAwesome.Sharp;
+using librian_desktop.Data.MainDb.Users;
 using librian_desktop.Utils;
 using MaterialSkin2DotNet;
 using MaterialSkin2DotNet.Controls;
@@ -32,7 +33,7 @@ namespace librian_desktop.Auth
             {
                 LblEmailError.Text = "Email Cannot Be Empty !";
             }
-            else if (string.IsNullOrEmpty(TxtLoignPassword.Text.Trim()))
+            else if (string.IsNullOrEmpty(TxtLoginPassword.Text.Trim()))
             {
                 LblPasswordError.Text = "Password Cannot Be Empty !";
             }
@@ -40,23 +41,31 @@ namespace librian_desktop.Auth
             {
                 ResetErrorFields();
 
-                var user = await userRepo.GetUserByEmail(TxtLoginEmail.Text.Trim().ToLower());
+                var user = await userRepo.GetUserByEmailAsync(TxtLoginEmail.Text.Trim().ToLower());
 
                 if (user != null)
                 {
-                    var passwordCheck = crypto.VerifyPassword(TxtLoignPassword.Text.Trim(), user.PasswordHash);
-                    if (passwordCheck)
+                    if (user.AccessRevoked == null)
                     {
-                        ResetInputFields();
-                        ResetErrorFields();
-                        var home = (Home)Application.OpenForms["Home"];
-                        home.Hide();
-                        var dashBoard = new DashBoard(user);
-                        dashBoard.Show();
+                        var passwordCheck = crypto.VerifyPassword(TxtLoginPassword.Text.Trim(), user.PasswordHash);
+                        if (passwordCheck)
+                        {
+                            ResetInputFields();
+                            ResetErrorFields();
+                            var home = (Home)Application.OpenForms["Home"];
+                            home.Hide();
+                            var dashBoard = new DashBoard(user);
+                            dashBoard.Show();
+                        }
+                        else
+                        {
+                            LblPasswordError.Text = "Wrong Password !";
+                        }
                     }
                     else
                     {
-                        LblPasswordError.Text = "Wrong Password !";
+                        MaterialMessageBox.Show(this, "Your Access Has Been Revoked ! Contact The Administrator",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -66,16 +75,30 @@ namespace librian_desktop.Auth
             }
         }
 
+        private void BtnShowPassword_Click(object sender, EventArgs e)
+        {
+            if (TxtLoginPassword.PasswordChar == '●')
+            {
+                TxtLoginPassword.PasswordChar = '\0';
+                BtnShowPassword.IconChar = IconChar.EyeSlash;
+            }
+            else
+            {
+                TxtLoginPassword.PasswordChar = '●';
+                BtnShowPassword.IconChar = IconChar.Eye;
+            }
+        }
+
         private void ResetInputFields()
         {
             TxtLoginEmail.Text = string.Empty;
-            TxtLoignPassword.Text = string.Empty;
+            TxtLoginPassword.Text = string.Empty;
         }
 
         private void ResetErrorFields()
         {
             LblEmailError.Text = string.Empty;
             LblPasswordError.Text = string.Empty;
-        } 
+        }
     }
 }
