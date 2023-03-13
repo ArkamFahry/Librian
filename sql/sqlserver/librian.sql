@@ -1,209 +1,129 @@
--- user entities
+-- Create database
 
-create table users
+create database Librian;
+go;
+
+-- Use database
+
+use Librian;
+go;
+
+-- Role entities
+
+create table Roles
 (
-    id                varchar(255)            default newid(),
-    email             varchar(255)   not null,
-    password_hash          varbinary(255) not null,
-    user_name         varchar(255)   not null,
-    picture           varchar(max),
-    access_revoked    binary,
-    access_revoked_at datetime2,
-    created_at        datetime2      not null default getdate(),
-    updated_at        datetime2,
-    unique (email),
-    unique (user_name),
-    primary key (id)
+    Id        varchar(255),
+    CreatedAt datetime2 not null default getdate(),
+    UpdatedAt datetime2,
+    primary key (Id)
 );
 go;
-create trigger users_updated_at
-    on users
-    for update
-    as
-    update u
-    set updated_at = getdate()
-    from users as u
-             join inserted as i on u.id = i.id;
-go;
 
--- role entities
-
-create table roles
-(
-    id         varchar(255) default newid(),
-    created_at datetime2 not null default getdate(),
-    updated_at datetime2,
-    primary key (id)
-);
-go;
-create trigger roles_updated_at
-    on roles
-    for update
-    as
-    update r
-    set updated_at = getdate()
-    from roles as r
-             join inserted as i on r.id = i.id;
-go;
-insert into roles(id)
+insert into Roles(Id)
 values ('user'),
        ('admin');
 go;
 
--- user role entities
-create table user_roles
+-- User entities
+
+create table Users
 (
-    id         varchar(255)          default newid(),
-    user_id    varchar(255) not null references users (id),
-    role_id    varchar(255) not null references roles (id),
-    created_at datetime2    not null default getdate(),
-    updated_at datetime2,
+    Id              varchar(255)                                default newId(),
+    Email           varchar(255) not null,
+    PasswordHash    varchar(255) not null,
+    Name            varchar(255) not null,
+    Picture         varchar(max),
+    Role            varchar(255) not null references Roles (Id) default 'user',
+    AccessRevoked   binary,
+    AccessRevokedAt datetime2,
+    CreatedAt       datetime2    not null                       default getdate(),
+    UpdatedAt       datetime2,
+    unique (Email),
+    primary key (Id)
 );
 go;
-create trigger user_roles_updated_at
-    on user_roles
-    for update
-    as
-    update ur
-    set updated_at = getdate()
-    from user_roles as ur
-             join inserted as i on ur.id = i.id;
-go;
 
--- book entities
+-- Book entities
 
-create table books
+create table Books
 (
-    id             varchar(255)          default newid(),
-    name           varchar(max) not null,
-    description    varchar(max),
-    published_date datetime2,
-    picture        varchar(max),
-    reference      varchar(max),
-    created_at     datetime2    not null default getdate(),
-    updated_at     datetime2,
-    primary key (id)
+    Id            varchar(255)          default newId(),
+    Name          varchar(max) not null,
+    Description   varchar(max),
+    PublishedDate datetime2,
+    Picture       varchar(max),
+    Reference     varchar(max),
+    CreatedAt     datetime2    not null default getdate(),
+    UpdatedAt     datetime2,
+    primary key (Id)
 );
 go;
-create trigger books_updated_at
-    on books
-    for update
-    as
-    update b
-    set updated_at = getdate()
-    from books as b
-             join inserted as i on b.id = i.id;
-go;
 
--- category entities
+-- Category entities
 
-create table categories
+create table Categories
 (
-    id         varchar(255)       default newid(),
-    name       varchar(max),
-    created_at datetime2 not null default getdate(),
-    updated_at datetime2,
-    primary key (id)
+    Id        varchar(255)       default newId(),
+    Name      varchar(255),
+    CreatedAt datetime2 not null default getdate(),
+    UpdatedAt datetime2,
+    unique (Name),
+    primary key (Id)
 );
 go;
-create trigger categories_updated_at
-    on categories
-    for update
-    as
-    update c
-    set updated_at = getdate()
-    from categories as c
-             join inserted as i on c.id = i.id;
-go;
 
--- book category entities
+-- Book category entities
 
-create table book_categories
+create table BookCategories
 (
-    id          varchar(255)          default newid(),
-    book_id     varchar(255) not null references books (id),
-    category_id varchar(255) not null references categories (id),
-    created_at  datetime2    not null default getdate(),
-    updated_at  datetime2,
-    unique (book_id, category_id),
-    primary key (id)
+    Id         varchar(255)          default newId(),
+    BookId     varchar(255) not null references Books (Id),
+    CategoryId varchar(255) not null references Categories (Id),
+    CreatedAt  datetime2    not null default getdate(),
+    UpdatedAt  datetime2,
+    unique (BookId, CategoryId),
+    primary key (Id)
 );
 go;
-create trigger book_categories_updated_at
-    on book_categories
-    for update
-    as
-    update bc
-    set updated_at = getdate()
-    from book_categories as bc
-             join inserted as i on bc.id = i.id;
-go;
 
--- author entities
+-- Author entities
 
-create table authors
+create table Authors
 (
-    id          varchar(255)          default newid(),
-    name        varchar(max) not null,
-    description varchar(max),
-    created_at  datetime2    not null default getdate(),
-    updated_at  datetime2,
-    primary key (id)
+    Id          varchar(255)          default newId(),
+    Name        varchar(max) not null,
+    Description varchar(max),
+    CreatedAt   datetime2    not null default getdate(),
+    UpdatedAt   datetime2,
+    primary key (Id)
 );
 go;
-create trigger authors_updated_at
-    on authors
-    for update
-    as
-    update a
-    set updated_at = getdate()
-    from authors as a
-             join inserted as i on a.id = i.id;
-go;
 
--- book author entities
+-- Book Author entities
 
-create table book_authors
+create table BookAuthors
 (
-    id         varchar(255)          default newid(),
-    book_id    varchar(255) not null references books (id),
-    author_id  varchar(255) not null references authors (id),
-    created_at datetime2    not null default getdate(),
-    updated_at datetime2,
-    unique (book_id, author_id),
-    primary key (id)
+    Id        varchar(255)          default newId(),
+    BookId    varchar(255) not null references Books (Id),
+    AuthorId  varchar(255) not null references Authors (Id),
+    CreatedAt datetime2    not null default getdate(),
+    UpdatedAt datetime2,
+    unique (BookId, AuthorId),
+    primary key (Id)
 );
 go;
-create trigger book_authors_updated_at
-    on book_authors
-    for update
-    as
-    update ba
-    set updated_at = getdate()
-    from book_authors as ba
-             join inserted as i on ba.id = i.id;
-go;
 
--- book borrower entities
+-- Book Borrower entities
 
-create table book_borrowers
+create table BookBorrowers
 (
-    id          varchar(255)          default newid(),
-    user_id     varchar(255) not null references users (id),
-    book_id     varchar(255) not null references users (id),
-    due_date    datetime2    not null,
-    returned_at datetime2,
-    created_at  datetime2    not null default getdate(),
-    updated_at  datetime2,
-    primary key (id)
+    Id         varchar(255)          default newId(),
+    UserId     varchar(255) not null references Users (Id),
+    BookId     varchar(255) not null references Books (Id),
+    DueDate    datetime2    not null,
+    ReturnedAt datetime2,
+    CreatedAt  datetime2    not null default getdate(),
+    UpdatedAt  datetime2,
+    primary key (Id)
 );
-go;
-create trigger book_borrowers_updated_at
-    on book_borrowers
-    for update
-    as
-    update bb
-    set updated_at = getdate()
-    from book_borrowers as bb
-             join inserted as i on bb.id = i.id;
 go;
