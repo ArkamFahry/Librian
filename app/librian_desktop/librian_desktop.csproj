@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Users\**" />
+    <EmbeddedResource Remove="Users\**" />
+    <None Remove="Users\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Check.Password.Strength" Version="1.0.3" />
     <PackageReference Include="EmailValidation" Version="1.0.8" />
@@ -29,7 +35,6 @@
 
   <ItemGroup>
     <Folder Include="Data\ObjectDb\" />
-    <Folder Include="Users\" />
   </ItemGroup>
 
   <ItemGroup>
