@@ -20,7 +20,9 @@ namespace librian_desktop.Data.MainDb.Books
 
         Task<IEnumerable<Book>> GetBooksByNameAsync(string name);
 
-        Task<IEnumerable<Book>> GetBooksByCategoryAsync(string category);
+        Task<IEnumerable<Book>> GetBooksByCategoryAsync(string category)
+
+        Task<IEnumerable<Book>> GetBooksByAuthorAsync(string author);
 
         Task<IEnumerable<Book>> GetAllBooksAsync();
     }
