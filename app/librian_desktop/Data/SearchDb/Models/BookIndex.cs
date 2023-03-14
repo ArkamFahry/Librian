@@ -12,11 +12,11 @@ namespace librian_desktop.Data.SearchDb.Models
 
         public string Name { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public DateTime PublishedDate { get; set; }
+        public string? PublishedDate { get; set; }
 
-        private string[] Authors { get; set; }
+        public string[] Authors { get; set; }
 
         public string[] Categories { get; set; }
 
