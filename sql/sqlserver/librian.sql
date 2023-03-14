@@ -63,7 +63,7 @@ go;
 create table Categories
 (
     Id        varchar(255)       default newId(),
-    Name      varchar(255),
+    Name      varchar(255) not null,
     CreatedAt datetime2 not null default getdate(),
     UpdatedAt datetime2,
     unique (Name),
