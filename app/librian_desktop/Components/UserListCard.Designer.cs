@@ -29,19 +29,15 @@
         private void InitializeComponent()
         {
             ProfilePicture = new PictureBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            LblUpdatedAt = new Label();
-            LblCreatedAt = new Label();
-            LblEmail = new Label();
-            LblName = new Label();
-            BtnUserInfo = new FontAwesome.Sharp.IconPictureBox();
-            BtnEditUser = new FontAwesome.Sharp.IconPictureBox();
+            BtnEditUser = new FontAwesome.Sharp.IconButton();
+            BtnUserInfo = new FontAwesome.Sharp.IconButton();
+            LblAccessStatus = new FontAwesome.Sharp.IconButton();
+            LblName = new FontAwesome.Sharp.IconButton();
+            LblEmail = new FontAwesome.Sharp.IconButton();
+            LblCreatedAt = new FontAwesome.Sharp.IconButton();
+            LblUpdatedAt = new FontAwesome.Sharp.IconButton();
+            LblRole = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)ProfilePicture).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)BtnUserInfo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)BtnEditUser).BeginInit();
             SuspendLayout();
             // 
             // ProfilePicture
@@ -50,120 +46,152 @@
             ProfilePicture.BackColor = Color.Transparent;
             ProfilePicture.Location = new Point(3, 1);
             ProfilePicture.Name = "ProfilePicture";
-            ProfilePicture.Size = new Size(204, 145);
+            ProfilePicture.Size = new Size(205, 145);
             ProfilePicture.SizeMode = PictureBoxSizeMode.StretchImage;
             ProfilePicture.TabIndex = 5;
             ProfilePicture.TabStop = false;
             // 
-            // label1
+            // BtnEditUser
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(227, 11);
-            label1.Name = "label1";
-            label1.Size = new Size(45, 15);
-            label1.TabIndex = 6;
-            label1.Text = "Name :";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(227, 45);
-            label2.Name = "label2";
-            label2.Size = new Size(42, 15);
-            label2.TabIndex = 7;
-            label2.Text = "Email :";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(227, 80);
-            label3.Name = "label3";
-            label3.Size = new Size(69, 15);
-            label3.TabIndex = 8;
-            label3.Text = "Created At :";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(227, 113);
-            label4.Name = "label4";
-            label4.Size = new Size(73, 15);
-            label4.TabIndex = 9;
-            label4.Text = "Updated At :";
-            // 
-            // LblUpdatedAt
-            // 
-            LblUpdatedAt.AutoSize = true;
-            LblUpdatedAt.ForeColor = Color.White;
-            LblUpdatedAt.Location = new Point(321, 113);
-            LblUpdatedAt.Name = "LblUpdatedAt";
-            LblUpdatedAt.Size = new Size(67, 15);
-            LblUpdatedAt.TabIndex = 13;
-            LblUpdatedAt.Text = "Updated At";
-            // 
-            // LblCreatedAt
-            // 
-            LblCreatedAt.AutoSize = true;
-            LblCreatedAt.ForeColor = Color.White;
-            LblCreatedAt.Location = new Point(321, 80);
-            LblCreatedAt.Name = "LblCreatedAt";
-            LblCreatedAt.Size = new Size(63, 15);
-            LblCreatedAt.TabIndex = 12;
-            LblCreatedAt.Text = "Created At";
-            // 
-            // LblEmail
-            // 
-            LblEmail.AutoSize = true;
-            LblEmail.ForeColor = Color.White;
-            LblEmail.Location = new Point(321, 45);
-            LblEmail.Name = "LblEmail";
-            LblEmail.Size = new Size(36, 15);
-            LblEmail.TabIndex = 11;
-            LblEmail.Text = "Email";
-            // 
-            // LblName
-            // 
-            LblName.AutoSize = true;
-            LblName.ForeColor = Color.White;
-            LblName.Location = new Point(321, 11);
-            LblName.Name = "LblName";
-            LblName.Size = new Size(39, 15);
-            LblName.TabIndex = 10;
-            LblName.Text = "Name";
+            BtnEditUser.BackColor = Color.FromArgb(2, 42, 48);
+            BtnEditUser.FlatStyle = FlatStyle.Popup;
+            BtnEditUser.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnEditUser.ForeColor = Color.White;
+            BtnEditUser.IconChar = FontAwesome.Sharp.IconChar.Pen;
+            BtnEditUser.IconColor = Color.White;
+            BtnEditUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            BtnEditUser.IconSize = 24;
+            BtnEditUser.Location = new Point(798, 13);
+            BtnEditUser.Name = "BtnEditUser";
+            BtnEditUser.Size = new Size(80, 30);
+            BtnEditUser.TabIndex = 14;
+            BtnEditUser.Text = "Edit";
+            BtnEditUser.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BtnEditUser.UseVisualStyleBackColor = false;
+            BtnEditUser.Click += BtnEditUser_Click;
             // 
             // BtnUserInfo
             // 
-            BtnUserInfo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtnUserInfo.BackColor = Color.Transparent;
-            BtnUserInfo.ForeColor = SystemColors.ControlText;
-            BtnUserInfo.IconChar = FontAwesome.Sharp.IconChar.Info;
-            BtnUserInfo.IconColor = SystemColors.ControlText;
+            BtnUserInfo.FlatStyle = FlatStyle.Popup;
+            BtnUserInfo.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnUserInfo.ForeColor = Color.White;
+            BtnUserInfo.IconChar = FontAwesome.Sharp.IconChar.CircleInfo;
+            BtnUserInfo.IconColor = Color.White;
             BtnUserInfo.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            BtnUserInfo.Location = new Point(948, 11);
+            BtnUserInfo.IconSize = 24;
+            BtnUserInfo.Location = new Point(900, 13);
             BtnUserInfo.Name = "BtnUserInfo";
-            BtnUserInfo.Size = new Size(32, 32);
-            BtnUserInfo.TabIndex = 14;
-            BtnUserInfo.TabStop = false;
+            BtnUserInfo.Size = new Size(80, 30);
+            BtnUserInfo.TabIndex = 15;
+            BtnUserInfo.Text = "Info";
+            BtnUserInfo.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BtnUserInfo.UseVisualStyleBackColor = true;
             BtnUserInfo.Click += BtnUserInfo_Click;
             // 
-            // BtnEditUser
+            // LblAccessStatus
             // 
-            BtnEditUser.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BtnEditUser.BackColor = Color.Transparent;
-            BtnEditUser.ForeColor = SystemColors.ControlText;
-            BtnEditUser.IconChar = FontAwesome.Sharp.IconChar.Pen;
-            BtnEditUser.IconColor = SystemColors.ControlText;
-            BtnEditUser.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            BtnEditUser.Location = new Point(903, 11);
-            BtnEditUser.Name = "BtnEditUser";
-            BtnEditUser.Size = new Size(32, 32);
-            BtnEditUser.TabIndex = 15;
-            BtnEditUser.TabStop = false;
-            BtnEditUser.Click += BtnEditUser_Click;
+            LblAccessStatus.FlatStyle = FlatStyle.Popup;
+            LblAccessStatus.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LblAccessStatus.ForeColor = Color.Green;
+            LblAccessStatus.IconChar = FontAwesome.Sharp.IconChar.CircleHalfStroke;
+            LblAccessStatus.IconColor = Color.Green;
+            LblAccessStatus.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            LblAccessStatus.IconSize = 15;
+            LblAccessStatus.ImageAlign = ContentAlignment.MiddleLeft;
+            LblAccessStatus.Location = new Point(227, 108);
+            LblAccessStatus.Name = "LblAccessStatus";
+            LblAccessStatus.Size = new Size(552, 25);
+            LblAccessStatus.TabIndex = 19;
+            LblAccessStatus.Text = "Access Available";
+            LblAccessStatus.TextAlign = ContentAlignment.MiddleLeft;
+            LblAccessStatus.TextImageRelation = TextImageRelation.ImageBeforeText;
+            LblAccessStatus.UseVisualStyleBackColor = true;
+            // 
+            // LblName
+            // 
+            LblName.FlatStyle = FlatStyle.Popup;
+            LblName.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LblName.ForeColor = Color.White;
+            LblName.IconChar = FontAwesome.Sharp.IconChar.User;
+            LblName.IconColor = Color.White;
+            LblName.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            LblName.IconSize = 15;
+            LblName.ImageAlign = ContentAlignment.MiddleLeft;
+            LblName.Location = new Point(227, 12);
+            LblName.Name = "LblName";
+            LblName.Size = new Size(552, 27);
+            LblName.TabIndex = 20;
+            LblName.Text = " User Name";
+            LblName.TextImageRelation = TextImageRelation.ImageBeforeText;
+            LblName.UseVisualStyleBackColor = true;
+            // 
+            // LblEmail
+            // 
+            LblEmail.FlatStyle = FlatStyle.Popup;
+            LblEmail.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LblEmail.ForeColor = Color.White;
+            LblEmail.IconChar = FontAwesome.Sharp.IconChar.At;
+            LblEmail.IconColor = Color.White;
+            LblEmail.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            LblEmail.IconSize = 15;
+            LblEmail.ImageAlign = ContentAlignment.MiddleLeft;
+            LblEmail.Location = new Point(227, 45);
+            LblEmail.Name = "LblEmail";
+            LblEmail.Size = new Size(552, 27);
+            LblEmail.TabIndex = 21;
+            LblEmail.Text = " Email";
+            LblEmail.TextImageRelation = TextImageRelation.ImageBeforeText;
+            LblEmail.UseVisualStyleBackColor = true;
+            // 
+            // LblCreatedAt
+            // 
+            LblCreatedAt.FlatStyle = FlatStyle.Popup;
+            LblCreatedAt.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            LblCreatedAt.ForeColor = Color.White;
+            LblCreatedAt.IconChar = FontAwesome.Sharp.IconChar.None;
+            LblCreatedAt.IconColor = Color.Black;
+            LblCreatedAt.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            LblCreatedAt.Location = new Point(798, 77);
+            LblCreatedAt.Name = "LblCreatedAt";
+            LblCreatedAt.Size = new Size(182, 25);
+            LblCreatedAt.TabIndex = 22;
+            LblCreatedAt.Text = "created at";
+            LblCreatedAt.TextAlign = ContentAlignment.MiddleLeft;
+            LblCreatedAt.UseVisualStyleBackColor = true;
+            // 
+            // LblUpdatedAt
+            // 
+            LblUpdatedAt.FlatStyle = FlatStyle.Popup;
+            LblUpdatedAt.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            LblUpdatedAt.ForeColor = Color.White;
+            LblUpdatedAt.IconChar = FontAwesome.Sharp.IconChar.None;
+            LblUpdatedAt.IconColor = Color.Black;
+            LblUpdatedAt.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            LblUpdatedAt.Location = new Point(798, 108);
+            LblUpdatedAt.Name = "LblUpdatedAt";
+            LblUpdatedAt.Size = new Size(182, 25);
+            LblUpdatedAt.TabIndex = 23;
+            LblUpdatedAt.Text = "updated at";
+            LblUpdatedAt.TextAlign = ContentAlignment.MiddleLeft;
+            LblUpdatedAt.UseVisualStyleBackColor = true;
+            // 
+            // LblRole
+            // 
+            LblRole.FlatStyle = FlatStyle.Popup;
+            LblRole.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LblRole.ForeColor = Color.White;
+            LblRole.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            LblRole.IconColor = Color.White;
+            LblRole.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            LblRole.IconSize = 15;
+            LblRole.ImageAlign = ContentAlignment.MiddleLeft;
+            LblRole.Location = new Point(227, 76);
+            LblRole.Name = "LblRole";
+            LblRole.Size = new Size(552, 27);
+            LblRole.TabIndex = 24;
+            LblRole.Text = " Role";
+            LblRole.TextImageRelation = TextImageRelation.ImageBeforeText;
+            LblRole.UseVisualStyleBackColor = true;
             // 
             // UserListCard
             // 
@@ -171,40 +199,31 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(2, 42, 48);
             BorderStyle = BorderStyle.FixedSingle;
-            Controls.Add(BtnEditUser);
-            Controls.Add(BtnUserInfo);
+            Controls.Add(LblRole);
             Controls.Add(LblUpdatedAt);
             Controls.Add(LblCreatedAt);
             Controls.Add(LblEmail);
             Controls.Add(LblName);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(LblAccessStatus);
+            Controls.Add(BtnUserInfo);
+            Controls.Add(BtnEditUser);
             Controls.Add(ProfilePicture);
             Name = "UserListCard";
             Size = new Size(993, 148);
-            MouseEnter += UserListCard_MouseEnter;
-            MouseLeave += UserListCard_MouseLeave;
-            MouseHover += UserListCard_MouseHover;
+            Load += UserListCard_Load;
             ((System.ComponentModel.ISupportInitialize)ProfilePicture).EndInit();
-            ((System.ComponentModel.ISupportInitialize)BtnUserInfo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)BtnEditUser).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
         private PictureBox ProfilePicture;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label LblUpdatedAt;
-        private Label LblCreatedAt;
-        private Label LblEmail;
-        private Label LblName;
-        private FontAwesome.Sharp.IconPictureBox BtnUserInfo;
-        private FontAwesome.Sharp.IconPictureBox BtnEditUser;
+        private FontAwesome.Sharp.IconButton BtnEditUser;
+        private FontAwesome.Sharp.IconButton BtnUserInfo;
+        private FontAwesome.Sharp.IconButton LblAccessStatus;
+        private FontAwesome.Sharp.IconButton LblName;
+        private FontAwesome.Sharp.IconButton LblEmail;
+        private FontAwesome.Sharp.IconButton LblCreatedAt;
+        private FontAwesome.Sharp.IconButton LblUpdatedAt;
+        private FontAwesome.Sharp.IconButton LblRole;
     }
 }

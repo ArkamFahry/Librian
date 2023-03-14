@@ -66,6 +66,7 @@
             Controls.Add(PictureBookImage);
             Name = "BookListCard";
             Size = new Size(995, 150);
+            Load += BookListCard_Load;
             ((System.ComponentModel.ISupportInitialize)PictureBookImage).EndInit();
             ResumeLayout(false);
             PerformLayout();

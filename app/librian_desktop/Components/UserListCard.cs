@@ -14,33 +14,25 @@ namespace librian_desktop.Components
 {
     public partial class UserListCard : UserControl
     {
-        public UserListCard()
-        {
-            InitializeComponent();
-        }
-
         private string _userId;
         private string _userName;
         private string _userEmail;
         private Image _userProfilePicture;
         private string _userCreatedAt;
+        private string? _userAccessRevokedAt = "Access Available";
+        private string _userRole = "user";
         private string? _userUpdatedAt = "Not Updated";
 
-        private void UserListCard_MouseEnter(object sender, EventArgs e)
+        public UserListCard()
         {
-            BackColor = Color.FromArgb(15, 2, 36);
+            InitializeComponent();
         }
 
-        private void UserListCard_MouseHover(object sender, EventArgs e)
+        private void UserListCard_Load(object sender, EventArgs e)
         {
-            BackColor = Color.FromArgb(15, 2, 36);
-        }
 
-        private void UserListCard_MouseLeave(object sender, EventArgs e)
-        {
-            BackColor = Color.FromArgb(2, 42, 48);
         }
-
+        
         private void BtnEditUser_Click(object sender, EventArgs e)
         {
             var editUser = new EditUser(_userId);
@@ -53,14 +45,12 @@ namespace librian_desktop.Components
             userInfo.ShowDialog();
         }
 
-        [Category("Custom Props")]
         public string UserId
         {
             get => _userId;
             set => _userId = value;
         }
 
-        [Category("Custom Props")]
         public string UserName
         {
             get => _userName;
@@ -71,7 +61,6 @@ namespace librian_desktop.Components
             }
         }
 
-        [Category("Custom Props")]
         public string UserEmail
         {
             get => _userEmail;
@@ -79,6 +68,38 @@ namespace librian_desktop.Components
             {
                 _userEmail = value;
                 LblEmail.Text = value;
+            }
+        }
+
+        public string UserRole
+        {
+            get => _userRole;
+            set
+            {
+                _userRole = value;
+                LblRole.Text = value;
+            }
+        }
+
+        public string? UserAccessRevokedAt
+        {
+            get => _userAccessRevokedAt;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    _userAccessRevokedAt = value;
+                    LblAccessStatus.Text = "Access Available";
+                    LblAccessStatus.ForeColor = Color.Green;
+                    LblAccessStatus.IconColor = Color.Green;
+                }
+                else
+                {
+                    _userAccessRevokedAt = value;
+                    LblAccessStatus.Text = "Access Revoked";
+                    LblAccessStatus.ForeColor = Color.Red;
+                    LblAccessStatus.IconColor = Color.Red;
+                }
             }
         }
 
@@ -100,7 +121,7 @@ namespace librian_desktop.Components
             set
             {
                 _userCreatedAt = value;
-                LblCreatedAt.Text = value;
+                LblCreatedAt.Text = $"Created At : {value}";
             }
         }
 
@@ -112,10 +133,7 @@ namespace librian_desktop.Components
             {
                 _userUpdatedAt = value;
                 LblUpdatedAt.Text = value;
-                if (LblUpdatedAt.Text == "")
-                {
-                    LblUpdatedAt.Text = "Not Updated";
-                }
+                LblUpdatedAt.Text = string.IsNullOrEmpty(value) ? "Not Updated" : $"Updated At : {value}";
             }
         }
     }

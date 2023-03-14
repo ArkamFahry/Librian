@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
 
 namespace librian_desktop.Components
 {
     public partial class BookListCard : UserControl
     {
+        private string _bookId;
+        private string _bookName;
+        private string _bookDescription;
+        private Image _bookCoverImage;
+
         public BookListCard()
         {
             InitializeComponent();
         }
 
-        private string _bookId;
-        private string _bookName;
-        private string _bookDescription;
-        private Image _bookCoverImage;
+        private void BookListCard_Load(object sender, EventArgs e)
+        {
+
+        }
 
         public string BookId
         {
