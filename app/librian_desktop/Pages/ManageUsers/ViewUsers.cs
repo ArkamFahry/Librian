@@ -45,7 +45,7 @@ namespace librian_desktop.Pages.ManageUsers
 
             FlowPanelUserView.Controls.Clear();
 
-            var users = await userList.SearchUserIndex(SearchBoxUser.Text);
+            var users = await userList.SearchUserIndexAsync(SearchBoxUser.Text);
             var userListCard = new UserListCard[users.Count()];
             if (users.Count() > 0)
             {
