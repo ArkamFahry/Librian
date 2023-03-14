@@ -6,25 +6,24 @@ using System.Threading.Tasks;
 using librian_desktop.Connetions;
 using librian_desktop.Data.SearchDb.Models;
 using Meilisearch;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-namespace librian_desktop.Data.SearchDb.Users
+namespace librian_desktop.Data.SearchDb.Books
 {
-    public class UserIndexRepo : IUserIndexRepo
+    public class BookIndexRepo : IBookIndexRepo
     {
-        private const string UsersIndex = "Users";
+        private const string BooksIndex = "Books";
 
-        public async Task<bool> CreateUserIndexAsync(UserIndex userIndex)
+        public async Task<bool> CreateBookIndexAsync(BookIndex bookIndex)
         {
             try
             {
                 var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
-                var index = client.Index(UsersIndex);
-                var users = new[]
+                var index = client.Index(BooksIndex);
+                var books = new[]
                 {
-                    userIndex
+                    bookIndex
                 };
-                await index.AddDocumentsAsync(users);
+                await index.AddDocumentsAsync(books);
                 return true;
 
             }
@@ -34,17 +33,17 @@ namespace librian_desktop.Data.SearchDb.Users
             }
         }
 
-        public async Task<bool> UpdateUserIndexAsync(UserIndex userIndex)
+        public async Task<bool> UpdateBookIndexAsync(BookIndex bookIndex)
         {
             try
             {
                 var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
-                var index = client.Index(UsersIndex);
-                var users = new[]
+                var index = client.Index(BooksIndex);
+                var books = new[]
                 {
-                    userIndex
+                    bookIndex
                 };
-                await index.UpdateDocumentsAsync(users);
+                await index.UpdateDocumentsAsync(books);
                 return true;
 
             }
@@ -54,12 +53,12 @@ namespace librian_desktop.Data.SearchDb.Users
             }
         }
 
-        public async Task<bool> DeleteUserIndexAsync(string id)
+        public async Task<bool> DeleteBookIndexAsync(string id)
         {
             try
             {
                 var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
-                var index = client.Index(UsersIndex);
+                var index = client.Index(BooksIndex);
                 await index.DeleteOneDocumentAsync(id);
                 return true;
             }
@@ -69,28 +68,28 @@ namespace librian_desktop.Data.SearchDb.Users
             }
         }
 
-        public async Task<IEnumerable<UserIndex>> SearchUserIndexAsync(string query)
+        public async Task<IEnumerable<BookIndex>> SearchBookIndexAsync(string query)
         {
             try
             {
                 var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
-                var index = client.Index(UsersIndex);
-                var users = await index.SearchAsync<UserIndex>(query);
+                var index = client.Index(BooksIndex);
+                var users = await index.SearchAsync<BookIndex>(query);
                 return users.Hits;
             }
             catch (MeilisearchCommunicationError)
             {
-                return Enumerable.Empty<UserIndex>();
+                return Enumerable.Empty<BookIndex>();
             }
         }
 
-        public async Task<UserIndex> GetUserIndexByIdAsync(string id)
+        public async Task<BookIndex> GetBookIndexByIdAsync(string id)
         {
             try
             {
                 var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
-                var index = client.Index(UsersIndex);
-                var user = await index.GetDocumentAsync<UserIndex>(id);
+                var index = client.Index(BooksIndex);
+                var user = await index.GetDocumentAsync<BookIndex>(id);
                 return user;
             }
             catch (MeilisearchCommunicationError)

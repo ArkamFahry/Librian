@@ -1,32 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using librian_desktop.Connetions;
+﻿using librian_desktop.Connetions;
 using librian_desktop.Data.SearchDb.Models;
 using Meilisearch;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-namespace librian_desktop.Data.SearchDb.Users
+namespace librian_desktop.Data.SearchDb.Authors
 {
-    public class UserIndexRepo : IUserIndexRepo
+    public class AuthorIndexRepo : IAuthorIndexRepo
     {
-        private const string UsersIndex = "Users";
+        private const string AuthorsIndex = "Authors";
 
-        public async Task<bool> CreateUserIndexAsync(UserIndex userIndex)
+        public async Task<bool> CreateAuthorIndexAsync(AuthorIndex authorIndex)
         {
             try
             {
                 var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
-                var index = client.Index(UsersIndex);
-                var users = new[]
+                var index = client.Index(AuthorsIndex);
+                var author = new[]
                 {
-                    userIndex
+                    authorIndex
                 };
-                await index.AddDocumentsAsync(users);
+                await index.AddDocumentsAsync(author);
                 return true;
-
             }
             catch (MeilisearchCommunicationError)
             {
@@ -34,19 +27,18 @@ namespace librian_desktop.Data.SearchDb.Users
             }
         }
 
-        public async Task<bool> UpdateUserIndexAsync(UserIndex userIndex)
+        public async Task<bool> UpdateAuthorIndexAsync(AuthorIndex authorIndex)
         {
             try
             {
                 var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
-                var index = client.Index(UsersIndex);
-                var users = new[]
+                var index = client.Index(AuthorsIndex);
+                var author = new[]
                 {
-                    userIndex
+                    authorIndex
                 };
-                await index.UpdateDocumentsAsync(users);
+                await index.UpdateDocumentsAsync(author);
                 return true;
-
             }
             catch (MeilisearchCommunicationError)
             {
@@ -54,12 +46,12 @@ namespace librian_desktop.Data.SearchDb.Users
             }
         }
 
-        public async Task<bool> DeleteUserIndexAsync(string id)
+        public async Task<bool> DeleteAuthorIndexAsync(string id)
         {
             try
             {
                 var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
-                var index = client.Index(UsersIndex);
+                var index = client.Index(AuthorsIndex);
                 await index.DeleteOneDocumentAsync(id);
                 return true;
             }
@@ -69,29 +61,29 @@ namespace librian_desktop.Data.SearchDb.Users
             }
         }
 
-        public async Task<IEnumerable<UserIndex>> SearchUserIndexAsync(string query)
+        public async Task<IEnumerable<AuthorIndex>> SearchAuthorIndexAsync(string query)
         {
             try
             {
                 var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
-                var index = client.Index(UsersIndex);
-                var users = await index.SearchAsync<UserIndex>(query);
-                return users.Hits;
+                var index = client.Index(AuthorsIndex);
+                var authors = await index.SearchAsync<AuthorIndex>(query);
+                return authors.Hits;
             }
             catch (MeilisearchCommunicationError)
             {
-                return Enumerable.Empty<UserIndex>();
+                return Enumerable.Empty<AuthorIndex>();
             }
         }
 
-        public async Task<UserIndex> GetUserIndexByIdAsync(string id)
+        public async Task<AuthorIndex> GetAuthorIndexByIdAsync(string id)
         {
             try
             {
                 var client = new MeilisearchClient(SeConnection.Url, SeConnection.MasterKey);
-                var index = client.Index(UsersIndex);
-                var user = await index.GetDocumentAsync<UserIndex>(id);
-                return user;
+                var index = client.Index(AuthorsIndex);
+                var author = await index.GetDocumentAsync<AuthorIndex>(id);
+                return author;
             }
             catch (MeilisearchCommunicationError)
             {

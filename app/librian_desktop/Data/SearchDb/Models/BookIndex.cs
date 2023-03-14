@@ -15,5 +15,13 @@ namespace librian_desktop.Data.SearchDb.Models
         public string Description { get; set; }
 
         public DateTime PublishedDate { get; set; }
+
+        private string[] Authors { get; set; }
+
+        public string[] Categories { get; set; }
+
+        public string? Picture { get; set; }
+
+        public string? Reference { get; set; }
     }
 }

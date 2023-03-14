@@ -9,14 +9,14 @@ namespace librian_desktop.Data.SearchDb.Users
 {
     public interface IUserIndexRepo
     {
-        Task<bool> CreateUserIndex(UserIndex user);
+        Task<bool> CreateUserIndexAsync(UserIndex userIndex);
 
-        Task<bool> UpdateUserIndex(UserIndex user);
+        Task<bool> UpdateUserIndexAsync(UserIndex userIndex);
 
-        Task<bool> DeleteUserIndex(string id);
+        Task<bool> DeleteUserIndexAsync(string id);
         
-        Task<IEnumerable<UserIndex>> SearchUserIndex(string query);
+        Task<IEnumerable<UserIndex>> SearchUserIndexAsync(string query);
 
-        Task<UserIndex> GetUserIndexById(string id);
+        Task<UserIndex> GetUserIndexByIdAsync(string id);
     }
 }
