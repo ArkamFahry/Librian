@@ -14,6 +14,7 @@ namespace librian_desktop.Data.MainDb.Authors
     {
         public async Task<bool> CreateAuthorAsync(Author author)
         {
+            author.Id = Guid.NewGuid().ToString();
             author.CreatedAt = DateTime.Now;
 
             await using var lbContext = new LibrianContext();
