@@ -31,7 +31,7 @@ namespace librian_desktop.Data.MainDb.Users
                 Role = user.Role,
                 AccessRevoked = user.AccessRevoked.ToString(),
                 CreatedAt = user.CreatedAt.ToString(),
-                UpdatedAt = user.UpdatedAt.ToString(),
+                UpdatedAt = "Not Updated",
             };
             await indexUser.CreateUserIndex(iUser);
 
