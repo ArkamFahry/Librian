@@ -79,7 +79,7 @@ namespace librian_desktop
 
         private void BtnProfile_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new UserProfile());
+            OpenChildForm(new UserProfile(_user));
             Text = "Profile";
         }
 
