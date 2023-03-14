@@ -45,6 +45,7 @@
             // SearchBoxBooks
             // 
             SearchBoxBooks.AllowPromptAsInput = true;
+            SearchBoxBooks.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             SearchBoxBooks.AnimateReadOnly = false;
             SearchBoxBooks.AsciiOnly = false;
             SearchBoxBooks.BackgroundImageLayout = ImageLayout.None;
