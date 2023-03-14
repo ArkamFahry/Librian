@@ -5,6 +5,7 @@ using librian_desktop.Data.MainDb.Users;
 using librian_desktop.Utils;
 using MaterialSkin2DotNet.Controls;
 using FontAwesome.Sharp;
+using EmailValidation;
 
 namespace librian_desktop.Auth
 {
@@ -43,6 +44,10 @@ namespace librian_desktop.Auth
             else if (string.IsNullOrEmpty(TxtSignUpPassword.Text.Trim()))
             {
                 LblPasswordError.Text = "Password Cannot Be Empty !";
+            }
+            else if(!EmailValidator.Validate(TxtSignUpEmail.Text.Trim().ToLower()))
+            {
+                LblEmailError.Text = "Email Address Invalid !";
             }
             else if (await checkIfEmailExist.EmailExits(TxtSignUpEmail.Text.Trim().ToLower()))
             {

@@ -1,4 +1,5 @@
-﻿using FontAwesome.Sharp;
+﻿using EmailValidation;
+using FontAwesome.Sharp;
 using librian_desktop.Data.MainDb.Users;
 using librian_desktop.Utils;
 using MaterialSkin2DotNet;
@@ -37,6 +38,10 @@ namespace librian_desktop.Auth
             {
                 LblPasswordError.Text = "Password Cannot Be Empty !";
             }
+            else if (!EmailValidator.Validate(TxtLoginEmail.Text.Trim().ToLower()))
+            {
+                LblEmailError.Text = "Email Address Invalid !";
+            }
             else
             {
                 ResetErrorFields();
@@ -47,8 +52,7 @@ namespace librian_desktop.Auth
                 {
                     if (user.AccessRevoked == null)
                     {
-                        var passwordCheck = crypto.VerifyPassword(TxtLoginPassword.Text.Trim(), user.PasswordHash);
-                        if (passwordCheck)
+                        if (crypto.VerifyPassword(TxtLoginPassword.Text.Trim(), user.PasswordHash))
                         {
                             ResetInputFields();
                             ResetErrorFields();
