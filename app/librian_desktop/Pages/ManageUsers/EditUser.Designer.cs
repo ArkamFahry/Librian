@@ -40,6 +40,9 @@
             ProfilePicture = new PictureBox();
             materialLabel4 = new MaterialSkin2DotNet.Controls.MaterialLabel();
             BtnUpdate = new MaterialSkin2DotNet.Controls.MaterialButton();
+            CmbRoleError = new Label();
+            LblEmailError = new Label();
+            LblUserNameError = new Label();
             ((System.ComponentModel.ISupportInitialize)ProfilePicture).BeginInit();
             SuspendLayout();
             // 
@@ -216,6 +219,7 @@
             BtnResetPassword.Type = MaterialSkin2DotNet.Controls.MaterialButton.MaterialButtonType.Contained;
             BtnResetPassword.UseAccentColor = false;
             BtnResetPassword.UseVisualStyleBackColor = true;
+            BtnResetPassword.Click += BtnResetPassword_Click;
             // 
             // ProfilePicture
             // 
@@ -256,12 +260,49 @@
             BtnUpdate.Type = MaterialSkin2DotNet.Controls.MaterialButton.MaterialButtonType.Contained;
             BtnUpdate.UseAccentColor = false;
             BtnUpdate.UseVisualStyleBackColor = true;
+            BtnUpdate.Click += BtnUpdate_Click;
+            // 
+            // CmbRoleError
+            // 
+            CmbRoleError.AutoSize = true;
+            CmbRoleError.BackColor = Color.Transparent;
+            CmbRoleError.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            CmbRoleError.ForeColor = Color.Red;
+            CmbRoleError.Location = new Point(335, 380);
+            CmbRoleError.Name = "CmbRoleError";
+            CmbRoleError.Size = new Size(0, 20);
+            CmbRoleError.TabIndex = 15;
+            // 
+            // LblEmailError
+            // 
+            LblEmailError.AutoSize = true;
+            LblEmailError.BackColor = Color.Transparent;
+            LblEmailError.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LblEmailError.ForeColor = Color.Red;
+            LblEmailError.Location = new Point(335, 260);
+            LblEmailError.Name = "LblEmailError";
+            LblEmailError.Size = new Size(0, 20);
+            LblEmailError.TabIndex = 16;
+            // 
+            // LblUserNameError
+            // 
+            LblUserNameError.AutoSize = true;
+            LblUserNameError.BackColor = Color.Transparent;
+            LblUserNameError.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LblUserNameError.ForeColor = Color.Red;
+            LblUserNameError.Location = new Point(335, 142);
+            LblUserNameError.Name = "LblUserNameError";
+            LblUserNameError.Size = new Size(0, 20);
+            LblUserNameError.TabIndex = 17;
             // 
             // EditUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1020, 550);
+            Controls.Add(LblUserNameError);
+            Controls.Add(LblEmailError);
+            Controls.Add(CmbRoleError);
             Controls.Add(BtnUpdate);
             Controls.Add(materialLabel4);
             Controls.Add(ProfilePicture);
@@ -302,5 +343,8 @@
         private PictureBox ProfilePicture;
         private MaterialSkin2DotNet.Controls.MaterialLabel materialLabel4;
         private MaterialSkin2DotNet.Controls.MaterialButton BtnUpdate;
+        private Label CmbRoleError;
+        private Label LblEmailError;
+        private Label LblUserNameError;
     }
 }

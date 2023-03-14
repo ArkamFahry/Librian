@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewUsers));
             FlowPanelUserView = new FlowLayoutPanel();
             SearchBoxUser = new MaterialSkin2DotNet.Controls.MaterialMaskedTextBox();
             SuspendLayout();
@@ -93,6 +94,7 @@
             Controls.Add(SearchBoxUser);
             Controls.Add(FlowPanelUserView);
             FormStyle = FormStyles.StatusAndActionBar_None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ViewUsers";
             Padding = new Padding(3, 0, 3, 3);
             Sizable = false;

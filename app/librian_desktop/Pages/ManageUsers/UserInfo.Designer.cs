@@ -43,6 +43,7 @@
             Name = "UserInfo";
             Padding = new Padding(3, 24, 3, 3);
             Sizable = false;
+            StartPosition = FormStartPosition.CenterParent;
             Text = "UserInfo";
             ResumeLayout(false);
         }

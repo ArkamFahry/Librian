@@ -57,6 +57,8 @@ namespace librian_desktop.Pages.ManageUsers
                     userListCard[i].UserId = user.Id;
                     userListCard[i].UserName = user.Name;
                     userListCard[i].UserEmail = user.Email;
+                    userListCard[i].UserRole = user.Role;
+                    userListCard[i].UserAccessRevokedAt = user.AccessRevoked;
                     userListCard[i].UserCreatedAt = user.CreatedAt;
                     userListCard[i].UserUpdatedAt = user.UpdatedAt;
                     FlowPanelUserView.Controls.Add(userListCard[i]);
