@@ -19,7 +19,7 @@ namespace librian_desktop.Data.MainDb.Users
             user.Role = "user";
 
             await using var lbContext = new LibrianContext();
-            lbContext.Users.Add(user);
+            await lbContext.Users.AddAsync(user);
             await lbContext.SaveChangesAsync();
 
             var indexUser = new UserIndexRepo();
@@ -33,7 +33,7 @@ namespace librian_desktop.Data.MainDb.Users
                 CreatedAt = user.CreatedAt.ToString(),
                 UpdatedAt = "Not Updated",
             };
-            await indexUser.CreateUserIndex(iUser);
+            await indexUser.CreateUserIndexAsync(iUser);
 
             return true;
         }
@@ -58,7 +58,7 @@ namespace librian_desktop.Data.MainDb.Users
                 CreatedAt = user.CreatedAt.ToString(),
                 UpdatedAt = user.UpdatedAt.ToString(),
             };
-            await indexUser.UpdateUserIndex(iUser);
+            await indexUser.UpdateUserIndexAsync(iUser);
 
             return true;
         }
@@ -70,7 +70,7 @@ namespace librian_desktop.Data.MainDb.Users
             await lbContext.SaveChangesAsync();
 
             var indexUser = new UserIndexRepo();
-            await indexUser.DeleteUserIndex(user.Id);
+            await indexUser.DeleteUserIndexAsync(user.Id);
 
             return true;
         }
@@ -89,6 +89,19 @@ namespace librian_desktop.Data.MainDb.Users
             var user = await lbContext.Users.SingleOrDefaultAsync(i => i.Id == id);
             return user;
         }
-        
+
+        public async Task<IEnumerable<User>> GetUsersByRole(string role)
+        {
+            await using var lbContext = new LibrianContext();
+            var users = lbContext.Users.Where(u => u.Role == role).ToList();
+            return users;
+        }
+
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            await using var lbContext = new LibrianContext();
+            var users = lbContext.Users.ToList();
+            return users;
+        }
     }
 }

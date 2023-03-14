@@ -17,5 +17,9 @@ namespace librian_desktop.Data.MainDb.Users
         Task<User?> GetUserByEmailAsync(string email);
 
         Task<User?> GetUserByIdAsync(string id);
+
+        Task<IEnumerable<User>> GetUsersByRole(string role);
+
+        Task<IEnumerable<User>> GetAllUsersAsync();
     }
 }
