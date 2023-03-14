@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <Folder Include="Data\ObjectDb\" />
-    <Folder Include="Data\SearchDb\Books\" />
     <Folder Include="Users\" />
   </ItemGroup>
 
